@@ -1,8 +1,9 @@
 {
-  "name": "Poor Richard's List",
-  "version": 1,
+  "name": "poor-richard's-list",
+  "version": "0.0.0",
   "dependencies": {
-    "express": "~4.11.1",
-    "mongodb": "~1.4.29"
+    "express": "^4.11.1",
+    "mongodb": "^1.4.29",
+    "morgan": "^1.5.1"
   }
 }
