@@ -1,0 +1,8 @@
+{
+  "name": "Poor Richard's List",
+  "version": 1,
+  "dependencies": {
+    "express": "~4.11.1",
+    "mongodb": "~1.4.29"
+  }
+}
