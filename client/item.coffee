@@ -1,5 +1,6 @@
 Item = Backbone.Model.extend
   urlRoot: "/items"
+  idAttribute: "_id"
 
 ItemView = Backbone.View.extend
   initialize: ->
@@ -16,12 +17,7 @@ ItemList = Backbone.Collection.extend
 
 ItemListView = Backbone.View.extend
   initialize: ->
-  #   @listenTo(@collection, 'change', @render)
-    # @collection.on 'sync', @render, this
-    @collection.on 'add', @addItem, this
-
-  # render: ->
-    # @collection.forEach @addItem, this
+    @listenTo @collection, 'add', @addItem
 
   addItem: (item) ->
     itemView = new ItemView(model: item)
