@@ -11,7 +11,7 @@
   </head>
   <body>
     <h1>Poor Richard's List</h1>
-    <div id = "item-list">
+    <div id = "container">
     </div>
   </body>
 </html>
@@ -24,5 +24,15 @@
   </div>
   <br>
 </script>
+
+<script id="show-template" type="text/x-handlebars-template">
+  <div>
+    <h3><a href="items/{{_id}}">{{name}}</a></h3>
+    <label>${{price}}</label>
+    <p>{{desc}}</p>
+  </div>
+  <br>
+</script>
+
 
 
