@@ -1,6 +1,7 @@
 # MODELS
 Item = Backbone.Model.extend
   urlRoot: "/items"
+  idAttribute: "_id"
 
 # COLLECTIONS
 Items = Backbone.Collection.extend
@@ -14,13 +15,7 @@ Items = Backbone.Collection.extend
 
 # default view for an item
 ItemView = Backbone.View.extend
-  events: 
-    'click a': 'show'
-
-  show: (e) -> 
-    e.preventDefault()
-    Backbone.history.navigate("items/#{@model.get("_id")}", { trigger: true });
-
+  
   initialize: ->
     @listenTo(@model, 'change', @render)
 
@@ -33,8 +28,7 @@ ItemView = Backbone.View.extend
 # view for items in list format
 ItemListView = Backbone.View.extend
   initialize: ->
-  #   @listenTo(@collection, 'change', @render)
-    @collection.on 'add', @addItem, this
+    @listenTo @collection, 'add', @addItem
 
   addItem: (item) ->
     itemView = new ItemView(model: item)
@@ -47,10 +41,10 @@ ItemShowView = Backbone.View.extend
     @listenTo(@model, 'change', @render)
 
   render: ->
+    console.log @model
     template = Handlebars.compile($("#show-template").html())
     @$el.html(template(@model.attributes))
     this
-
 
 
 #########
@@ -65,7 +59,7 @@ ItemRouter = Backbone.Router.extend
     # nothing yet
     
   start: ->
-    Backbone.history.start({pushState: true})
+    Backbone.history.start()
 
   index: ->
     items = new Items()
@@ -74,7 +68,7 @@ ItemRouter = Backbone.Router.extend
     items.fetch()
 
   show: (id) ->
-    item = new Item({id: id})
+    item = new Item({_id: id})
     item.fetch()
     itemShowView = new ItemShowView(model: item)
     $("#container").html(itemShowView.el)
