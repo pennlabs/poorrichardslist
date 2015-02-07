@@ -27,9 +27,22 @@ ItemListView = Backbone.View.extend
     itemView = new ItemView(model: item)
     @$el.append(itemView.render().el)
 
+ItemRouter = Backbone.Router.extend
+  routes:
+    "": "index"
+    "items/:id": "show"
+
+  initialize: ->
+    @itemList = new ItemList()
+    @itemListView = new ItemListView(collection: @itemList)
+    $("#item-list").html(@itemListView.el)
+
+  start: ->
+    Backbone.history.start({pushState: true})
+
+  index: ->
+    @itemList.fetch()
+
 $ ->
-  list = new ItemList()
-  listView = new ItemListView(collection: list)
-  list.fetch()
-  $("#item-list").html(listView.el)
+  app = new ItemRouter().start()
 
