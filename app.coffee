@@ -7,8 +7,8 @@ parseUrlencoded = bodyParser.urlencoded {extended: false}
 
 BSON = require('mongodb').BSONPure;
 
-app.use express.static('public')
-app.use morgan('combined')
+app.use express.static 'public'
+app.use morgan 'combined'
 
 # setup mongodb
 MongoClient = require('mongodb').MongoClient
@@ -23,18 +23,18 @@ app.get '/upload', (req, res) ->
 
 app.get '/items', (req, res) ->
   db.collection('items').find({}).toArray (err, items) ->
-    res.json(items)
+    res.json items
 
 app.get '/items/:id', (req, res) ->
   console.log "id: #{req.params.id}"
   db.collection('items').findOne {_id: new BSON.ObjectID(req.params.id)},
     (err, item) ->
-      res.json(item)
+      res.json item
 
 app.post '/items', parseUrlencoded, (req, res) ->
   item = req.body
   db.collection('items').insert item, (err, result) ->
-    res.send result
+    res.status(201).json result
 
 # startup server
 mongoclient.open (err, mongoclient) ->
