@@ -15,7 +15,6 @@ Items = Backbone.Collection.extend
 
 # default view for an item
 ItemView = Backbone.View.extend
-  
   initialize: ->
     @listenTo(@model, 'change', @render)
 
@@ -30,14 +29,18 @@ ItemListView = Backbone.View.extend
   initialize: ->
     @listenTo @collection, 'add', @addItem
 
+  render: ->
+    template = Handlebars.compile($("#item-list-template").html())
+    @$el.html(template())
+    this
+
   addItem: (item) ->
     itemView = new ItemView(model: item)
     @$el.append(itemView.render().el)
 
-
 # view for items on the show page
 ItemShowView = Backbone.View.extend
-  initialize: -> 
+  initialize: ->
     @listenTo(@model, 'change', @render)
 
   render: ->
@@ -45,6 +48,30 @@ ItemShowView = Backbone.View.extend
     template = Handlebars.compile($("#show-template").html())
     @$el.html(template(@model.attributes))
     this
+
+ItemFormView = Backbone.View.extend
+  events:
+    submit: "save"
+
+  render: ->
+    template = Handlebars.compile($("#item-form-template").html())
+    @$el.html(template())
+    this
+
+  save: (e) ->
+    e.preventDefault()
+    console.log "oije"
+    console.log @$('input[name=name]').val()
+    data =
+      name: @$('input[name=name]').val()
+      desc: @$('input[name=desc]').val()
+      price: @$('input[name=price]').val()
+    @model.save data,
+      success: (model, res, options) ->
+        Backbone.history.navigate("#items/#{res[0]._id}", {trigger: true})
+      error: (model, xhr, options) ->
+        errors = JSON.parse(xhr.responseText).errors
+        alert "Item submit errors: #{errors}"
 
 
 #########
@@ -54,17 +81,18 @@ ItemRouter = Backbone.Router.extend
   routes:
     "": "index"
     "items/:id": "show"
+    "upload": "new"
 
   initialize: ->
     # nothing yet
-    
+
   start: ->
     Backbone.history.start()
 
   index: ->
     items = new Items()
     itemListView = new ItemListView(collection: items)
-    $("#container").html(itemListView.el)
+    $("#container").html(itemListView.render().el)
     items.fetch()
 
   show: (id) ->
@@ -72,6 +100,11 @@ ItemRouter = Backbone.Router.extend
     item.fetch()
     itemShowView = new ItemShowView(model: item)
     $("#container").html(itemShowView.el)
+
+  new: ->
+    item = new Item()
+    itemFormView = new ItemFormView(model: item)
+    $("#container").html(itemFormView.render().el)
 
 $ ->
   app = new ItemRouter().start()

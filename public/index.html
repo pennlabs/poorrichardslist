@@ -7,7 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
     <script src="js/item.js"></script>
-    <title>Poor Richar's List</title>
+    <title>Poor Richard's List</title>
   </head>
   <body>
     <h1>Poor Richard's List</h1>
@@ -15,6 +15,10 @@
     </div>
   </body>
 </html>
+
+<script id="item-list-template" type="text/x-handlebars-template">
+    <a href="#upload">Upload Item</a>
+</script>
 
 <script id="item-template" type="text/x-handlebars-template">
   <div>
@@ -34,5 +38,13 @@
   <br>
 </script>
 
-
+<script id="item-form-template" type="text/x-handlebars-template">
+  Upload Item
+  <form>
+    <input name="name" placeholder="Intro to Stat"><br>
+    <input name="desc" placeholder="Amazing condition"><br>
+    <input name="price" type="number" placeholder="10.5"><br>
+    <input type="submit">
+  </form>
+</script>
 
