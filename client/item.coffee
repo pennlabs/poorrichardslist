@@ -66,6 +66,7 @@ ItemFormView = Backbone.View.extend
       name: @$('input[name=name]').val()
       desc: @$('input[name=desc]').val()
       price: @$('input[name=price]').val()
+      tags: @$('input[name=tags]').val()
     @model.save data,
       success: (model, res, options) ->
         Backbone.history.navigate("#items/#{res[0]._id}", {trigger: true})

@@ -1,5 +1,6 @@
 express = require 'express'
 morgan = require 'morgan'
+_ = require 'lodash'
 app = express()
 
 app.use express.static 'public'
@@ -21,9 +22,13 @@ app.get '/items/:id', (req, res) ->
       res.json item
 
 app.post '/items', parseUrlencoded, (req, res) ->
-  item = req.body
-  db.collection('items').insert item, (err, result) ->
-    res.status(201).json result
+  tags = _.map (req.body.tags.split " "), (name) -> {name: name}
+  db.collection('tags').insert tags, (err, tags) ->
+    tagsIds = _.map tags, (tag) -> tag._id
+    item = req.body
+    item.tags = tagsIds
+    db.collection('items').insert item, (err, result) ->
+      res.status(201).json result
 
 # setup mongodb
 BSON = require('mongodb').BSONPure
