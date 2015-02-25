@@ -23,7 +23,6 @@ ItemView = Backbone.View.extend
     @$el.html(template(@model.attributes))
     this
 
-
 # view for items in list format
 ItemListView = Backbone.View.extend
   initialize: ->
@@ -45,7 +44,7 @@ ItemShowView = Backbone.View.extend
 
   render: ->
     console.log @model
-    template = Handlebars.compile($("#show-template").html())
+    template = Handlebars.compile($("#item-show-template").html())
     @$el.html(template(@model.attributes))
     this
 
@@ -60,12 +59,11 @@ ItemFormView = Backbone.View.extend
 
   save: (e) ->
     e.preventDefault()
-    console.log "oije"
-    console.log @$('input[name=name]').val()
     data =
       name: @$('input[name=name]').val()
       desc: @$('input[name=desc]').val()
       price: @$('input[name=price]').val()
+      tags: @$('input[name=tags]').val()
     @model.save data,
       success: (model, res, options) ->
         Backbone.history.navigate("#items/#{res[0]._id}", {trigger: true})

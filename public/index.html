@@ -40,11 +40,14 @@
   <br>
 </script>
 
-<script id="show-template" type="text/x-handlebars-template">
+<script id="item-show-template" type="text/x-handlebars-template">
   <div>
     <h3><a href="#items/{{_id}}">{{name}}</a></h3>
     <label>${{price}}</label>
     <p>{{desc}}</p>
+    {{#each tags}}
+      {{name}}
+    {{/each}}
   </div>
   <br>
 </script>
@@ -55,6 +58,7 @@
     <input name="name" placeholder="Intro to Stat"><br>
     <input name="desc" placeholder="Amazing condition"><br>
     <input name="price" type="number" placeholder="10.5"><br>
+    <input name="tags" placeholder="#texbook #cis120"><br>
     <input type="submit">
   </form>
 </script>
