@@ -8,4 +8,4 @@ To Get Started:
 5. Run coffeescript compilation continuously `coffee --watch --compile --output
    public/js client`
 6. Install supervisor globally `npm install supervisor`
-4. Run server via supervisor `supervisor app.coffee`.
+4. Run server via supervisor `supervisor server/app.coffee`.
