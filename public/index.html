@@ -6,29 +6,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="skeleton.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="js/app.js"></script>
+    <script src="js/listing.js"></script>
+    <script src="js/tag.js"></script>
     <script src="js/item.js"></script>
     <title>Poor Richard's List</title>
   </head>
   <body>
     <div class="main">
-      <div class = "home_top">
+      <div class="home_top">
         <h2><a href="/" id="title">Poor Richard's List</a></h2>
       </div>
-      <div id = "container">
+      <div id="container" class="container">
       </div>
     </div>
   </body>
 </html>
 
-
-
-
-
-
+<script id="listing-template" type="text/x-handlebars-template">
+  <div class="row">
+    <div id="tag-list" class="two columns">
+    </div>
+    <div id="item-list" class="ten columns">
+    </div>
+  </div>
+</script>
 
 <script id="item-list-template" type="text/x-handlebars-template">
-    <a href="#upload">Upload Item</a>
+  <a href="#upload" class="button button-primary">Upload Item</a>
 </script>
 
 <script id="item-template" type="text/x-handlebars-template">
@@ -61,5 +69,14 @@
     <input name="tags" placeholder="#texbook #cis120"><br>
     <input type="submit">
   </form>
+</script>
+
+<script id="tag-list-template" type="text/x-handlebars-template">
+  <div id="tag-list">
+  </div>
+</script>
+
+<script id="tag-template" type="text/x-handlebars-template">
+  <h5><a href="#tags/{{_id}}">{{name}}({{count}})</a></h5>
 </script>
 
