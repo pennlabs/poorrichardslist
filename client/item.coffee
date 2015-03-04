@@ -1,20 +1,19 @@
 # MODELS
-Item = Backbone.Model.extend
+App.Models.Item = Backbone.Model.extend
   urlRoot: "/items"
   idAttribute: "_id"
 
 # COLLECTIONS
-Items = Backbone.Collection.extend
-  model: Item
+App.Collections.Items = Backbone.Collection.extend
+  model: App.Models.Item
   url: "/items"
-
 
 #########
 # VIEWS #
 #########
 
 # default view for an item
-ItemView = Backbone.View.extend
+App.Views.ItemView = Backbone.View.extend
   initialize: ->
     @listenTo(@model, 'change', @render)
 
@@ -24,7 +23,7 @@ ItemView = Backbone.View.extend
     this
 
 # view for items in list format
-ItemListView = Backbone.View.extend
+App.Views.ItemListView = Backbone.View.extend
   initialize: ->
     @listenTo @collection, 'add', @addItem
 
@@ -34,11 +33,11 @@ ItemListView = Backbone.View.extend
     this
 
   addItem: (item) ->
-    itemView = new ItemView(model: item)
+    itemView = new App.Views.ItemView(model: item)
     @$el.append(itemView.render().el)
 
 # view for items on the show page
-ItemShowView = Backbone.View.extend
+App.Views.ItemShowView = Backbone.View.extend
   initialize: ->
     @listenTo(@model, 'change', @render)
 
@@ -48,7 +47,7 @@ ItemShowView = Backbone.View.extend
     @$el.html(template(@model.attributes))
     this
 
-ItemFormView = Backbone.View.extend
+App.Views.ItemFormView = Backbone.View.extend
   events:
     submit: "save"
 
@@ -71,7 +70,6 @@ ItemFormView = Backbone.View.extend
         errors = JSON.parse(xhr.responseText).errors
         alert "Item submit errors: #{errors}"
 
-
 #########
 # ROUTER #
 #########
@@ -88,20 +86,26 @@ ItemRouter = Backbone.Router.extend
     Backbone.history.start()
 
   index: ->
-    items = new Items()
-    itemListView = new ItemListView(collection: items)
-    $("#container").html(itemListView.render().el)
+    items = new App.Collections.Items()
+    itemListView = new App.Views.ItemListView(collection: items)
+    tags = new App.Collections.Tags()
+    tagListView = new App.Views.TagListView(collection: tags)
+    listingView = new App.Views.ListingView
+      itemListView: itemListView
+      tagListView: tagListView
+    $("#container").html(listingView.render().el)
     items.fetch()
+    tags.fetch()
 
   show: (id) ->
-    item = new Item({_id: id})
+    item = new App.Models.Item({_id: id})
     item.fetch()
-    itemShowView = new ItemShowView(model: item)
+    itemShowView = new App.Views.ItemShowView(model: item)
     $("#container").html(itemShowView.el)
 
   new: ->
-    item = new Item()
-    itemFormView = new ItemFormView(model: item)
+    item = new App.Models.Item()
+    itemFormView = new App.Views.ItemFormView(model: item)
     $("#container").html(itemFormView.render().el)
 
 $ ->

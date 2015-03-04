@@ -7,7 +7,7 @@ morgan = require 'morgan'
 _ = require 'lodash'
 app = express()
 
-app.use express.static '../public'
+app.use express.static 'public'
 app.use morgan 'combined'
 
 bodyParser = require 'body-parser'
@@ -31,6 +31,15 @@ app.post '/items', parseUrlencoded, (req, res) ->
   tags = _.map (req.body.tags.split " "), (name) -> {name: name}
   Item.addItem item, tags, (result) ->
     res.status(201).json result
+
+app.get '/tags', (req, res) ->
+  db.collection('tags').find({}).sort({_id: -1}).toArray (err, tags) ->
+    res.json tags
+
+app.get '/tags/:id', (req, res) ->
+  db.collection('tags').findOne {_id: new BSON.ObjectID(req.params.id)},
+    (err, tag) ->
+      res.json tag
 
 app.listen 8080, ->
   console.log "server started!!"
