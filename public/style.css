@@ -18,5 +18,43 @@
     text-decoration: none;
 }
 
-#container {
+#listing-container {
+}
+
+#item-form-container {
+    background-color: rgb(245,245,245);
+    text-align: center;
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+
+.form-main-button {
+    border-radius: 0px;
+    font-family: Avenir;
+    font-style: normal;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 18px;
+    background-color: white;
+    color: black;
+}
+
+.form-main-button:hover,
+button:hover,
+.button:focus,
+button:focus
+{
+  background-color: rgb(155,155,155);
+  border-color: black;
+  outline: 0; 
+}
+
+.form-container {
+    margin-right: 140px;
+}
+
+.select-type {
+    font-family: Avenir;
+    margin-right: 15px;
 }
