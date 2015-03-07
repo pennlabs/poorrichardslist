@@ -25,9 +25,12 @@
 }
 
 #item-form {
-    background-color: rgb(245,245,245);
+
+}
+
+.item-form-container {
     text-align: center;
-    padding-top: 90px;
+    padding-top: 40px;
     padding-bottom: 90px;
     margin-right: 140px;
 }
