@@ -1,4 +1,5 @@
 App.Views.ListingView = Backbone.View.extend
+  id: "listing"
   initialize: (options) ->
     @itemListView = options.itemListView
     @tagListView = options.tagListView

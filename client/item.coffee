@@ -48,11 +48,12 @@ App.Views.ItemShowView = Backbone.View.extend
     this
 
 App.Views.ItemFormView = Backbone.View.extend
+  id: "item-form"
   events:
     submit: "save"
 
   render: ->
-    template = Handlebars.compile($("#item-form-template").html())
+    template = Handlebars.compile($("#item-form-template-main").html())
     @$el.html(template())
     this
 

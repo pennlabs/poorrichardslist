@@ -12,12 +12,41 @@
     text-align: center;
 }
 
- #title {
+#title {
     font-size: 38px;
     color: black;
     text-decoration: none;
 }
 
+#item-form {
+    background-color: rgb(245,245,245);
+    text-align: center;
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
 
-#container {
+.form-main-button {
+    border-radius: 0px;
+    font-family: Avenir;
+    font-style: normal;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 18px;
+    background-color: white;
+    color: black;
+}
+
+.form-main-button:hover,
+button:hover,
+.button:focus,
+button:focus
+{
+  background-color: rgb(155,155,155);
+  border-color: black;
+  outline: 0;
+}
+
+.select-type {
+    font-family: Avenir;
+    margin-right: 15px;
 }

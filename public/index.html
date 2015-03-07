@@ -60,15 +60,40 @@
   <br>
 </script>
 
-<script id="item-form-template" type="text/x-handlebars-template">
-  Upload Item
-  <form>
-    <input name="name" placeholder="Intro to Stat"><br>
-    <input name="desc" placeholder="Amazing condition"><br>
-    <input name="price" type="number" placeholder="10.5"><br>
-    <input name="tags" placeholder="#texbook #cis120"><br>
-    <input type="submit">
-  </form>
+
+<script id="item-form-template-main" type="text/x-handlebars-template">
+  <span class="select-type">Select an item type </span>
+  <a class="button form-main-button" href="#"> Goods</a>
+  <a class="button form-main-button" href="#"> Textbooks</a>
+  <a class="button form-main-button" href="#"> Sublets</a>
+</script>
+
+<script id="item-form-template-goods" type="text/x-handlebars-template">
+  <div class="form-background">
+    <form action="/items" method="post">
+        <div class="row">
+          <div class="six columns">
+            <label for="exampleEmailInput">Your email</label>
+            <input name="name"class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+          </div>
+          <div class="six columns">
+            <label for="exampleRecipientInput">Reason for contacting</label>
+            <select class="u-full-width" id="exampleRecipientInput">
+              <option value="Option 1">Questions</option>
+              <option value="Option 2">Admiration</option>
+              <option value="Option 3">Can I geet your number?</option>
+            </select>
+          </div>
+        </div>
+        <label for="exampleMessage">Message</label>
+        <textarea class="u-full-width" placeholder="Hi Dave …" id="exampleMessage"></textarea>
+        <label class="example-send-yourself-copy">
+          <input type="checkbox">
+          <span class="label-body">Send a copy to yourself</span>
+        </label>
+        <input class="button-primary" type="submit" value="Submit">
+      </form>
+    </div>
 </script>
 
 <script id="tag-list-template" type="text/x-handlebars-template">
@@ -78,5 +103,8 @@
 
 <script id="tag-template" type="text/x-handlebars-template">
   <h5><a href="#tags/{{_id}}">{{name}}({{count}})</a></h5>
+</script>
+
+
 </script>
 
