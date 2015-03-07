@@ -48,6 +48,7 @@ App.Views.ItemShowView = Backbone.View.extend
     this
 
 App.Views.ItemFormView = Backbone.View.extend
+  id: "item-form"
   events:
     submit: "save"
 
@@ -93,7 +94,7 @@ ItemRouter = Backbone.Router.extend
     listingView = new App.Views.ListingView
       itemListView: itemListView
       tagListView: tagListView
-    $("#listing-container").html(listingView.render().el)
+    $("#container").html(listingView.render().el)
     items.fetch()
     tags.fetch()
 
@@ -101,12 +102,12 @@ ItemRouter = Backbone.Router.extend
     item = new App.Models.Item({_id: id})
     item.fetch()
     itemShowView = new App.Views.ItemShowView(model: item)
-    $("#listing-container").html(itemShowView.el)
+    $("#container").html(itemShowView.el)
 
   new: ->
     item = new App.Models.Item()
     itemFormView = new App.Views.ItemFormView(model: item)
-    $("#item-form-container").html(itemFormView.render().el)
+    $("#container").html(itemFormView.render().el)
 
 $ ->
   app = new ItemRouter().start()

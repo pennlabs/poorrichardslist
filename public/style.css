@@ -18,16 +18,12 @@
     text-decoration: none;
 }
 
-#listing-container {
-}
-
-#item-form-container {
+#item-form {
     background-color: rgb(245,245,245);
     text-align: center;
     padding-top: 90px;
     padding-bottom: 90px;
 }
-
 
 .form-main-button {
     border-radius: 0px;
@@ -47,11 +43,7 @@ button:focus
 {
   background-color: rgb(155,155,155);
   border-color: black;
-  outline: 0; 
-}
-
-.form-container {
-    margin-right: 140px;
+  outline: 0;
 }
 
 .select-type {
