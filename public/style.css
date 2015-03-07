@@ -18,12 +18,20 @@
     text-decoration: none;
 }
 
+#subtitle {
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+}
+
 #item-form {
     background-color: rgb(245,245,245);
     text-align: center;
     padding-top: 90px;
     padding-bottom: 90px;
+    margin-right: 140px;
 }
+
 
 .form-main-button {
     border-radius: 0px;
