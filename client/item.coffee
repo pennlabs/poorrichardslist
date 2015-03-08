@@ -33,6 +33,7 @@ App.Views.ItemListView = Backbone.View.extend
     this
 
   addItem: (item) ->
+    App.Indices.ItemIndex.add(item.attributes)
     itemView = new App.Views.ItemView(model: item)
     @$el.append(itemView.render().el)
 
