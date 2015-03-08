@@ -1,0 +1,24 @@
+<script id="item-list-template" type="text/x-handlebars-template">
+  <a href="#upload" class="button button-primary">Upload Item</a>
+</script>
+
+<script id="item-template" type="text/x-handlebars-template">
+  <div>
+    <h3><a href="#items/{{_id}}">{{name}}</a></h3>
+    <label>${{price}}</label>
+    <p>{{desc}}</p>
+  </div>
+  <br>
+</script>
+
+<script id="item-show-template" type="text/x-handlebars-template">
+  <div>
+    <h3><a href="#items/{{_id}}">{{name}}</a></h3>
+    <label>${{price}}</label>
+    <p>{{desc}}</p>
+    {{#each tags}}
+      {{name}}
+    {{/each}}
+  </div>
+  <br>
+</script>

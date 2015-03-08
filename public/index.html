@@ -35,32 +35,6 @@
   </div>
 </script>
 
-<script id="item-list-template" type="text/x-handlebars-template">
-  <a href="#upload" class="button button-primary">Upload Item</a>
-</script>
-
-<script id="item-template" type="text/x-handlebars-template">
-  <div>
-    <h3><a href="#items/{{_id}}">{{name}}</a></h3>
-    <label>${{price}}</label>
-    <p>{{desc}}</p>
-  </div>
-  <br>
-</script>
-
-<script id="item-show-template" type="text/x-handlebars-template">
-  <div>
-    <h3><a href="#items/{{_id}}">{{name}}</a></h3>
-    <label>${{price}}</label>
-    <p>{{desc}}</p>
-    {{#each tags}}
-      {{name}}
-    {{/each}}
-  </div>
-  <br>
-</script>
-
-
 <script id="item-form-template-main" type="text/x-handlebars-template">
   <span class="select-type">Select an item type </span>
   <a class="button form-main-button" href="#"> Goods</a>
@@ -96,6 +70,31 @@
     </div>
 </script>
 
+<script id="item-list-template" type="text/x-handlebars-template">
+  <a href="#upload" class="button button-primary">Upload Item</a>
+</script>
+
+<script id="item-template" type="text/x-handlebars-template">
+  <div>
+    <h3><a href="#items/{{_id}}">{{name}}</a></h3>
+    <label>${{price}}</label>
+    <p>{{desc}}</p>
+  </div>
+  <br>
+</script>
+
+<script id="item-show-template" type="text/x-handlebars-template">
+  <div>
+    <h3><a href="#items/{{_id}}">{{name}}</a></h3>
+    <label>${{price}}</label>
+    <p>{{desc}}</p>
+    {{#each tags}}
+      {{name}}
+    {{/each}}
+  </div>
+  <br>
+</script>
+
 <script id="tag-list-template" type="text/x-handlebars-template">
   <div id="tag-list">
   </div>
@@ -103,8 +102,5 @@
 
 <script id="tag-template" type="text/x-handlebars-template">
   <h5><a href="#tags/{{_id}}">{{name}}({{count}})</a></h5>
-</script>
-
-
 </script>
 
