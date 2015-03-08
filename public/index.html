@@ -32,8 +32,15 @@
   <div class="row">
     <div id="tag-list" class="two columns">
     </div>
-    <div id="item-list" class="ten columns">
+    <div id="listing-container" class="ten columns">
+      <a href="#upload" class="button button-primary">Upload Item</a>
     </div>
+  </div>
+</script>
+
+<script id="search-bar-template" type="text/x-handlebars-template">
+  <div id="search-bar">
+    <input type="text" placeholder="Search for items">
   </div>
 </script>
 
@@ -73,7 +80,8 @@
 </script>
 
 <script id="item-list-template" type="text/x-handlebars-template">
-  <a href="#upload" class="button button-primary">Upload Item</a>
+  <div id="item-list">
+  </div>
 </script>
 
 <script id="item-template" type="text/x-handlebars-template">

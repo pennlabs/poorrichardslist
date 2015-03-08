@@ -3,3 +3,4 @@ window.App =
   Views: {}
   Collections: {}
   Indices: {}
+  PubSub: _.extend {}, Backbone.Events
