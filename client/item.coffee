@@ -28,8 +28,8 @@ App.Views.ItemListView = Backbone.View.extend
     @listenTo @collection, 'add', @addItem
     @listenTo App.PubSub, 'search', @displayItems
     @listenTo App.PubSub, 'unsearch', @displayAll
-    @listenTo App.PubSub, 'tagSelect', @displayItems
-    @listenTo App.PubSub, 'tagDeselect', @displayAll
+    @listenTo App.PubSub, 'tagFilter', @displayItems
+    @listenTo App.PubSub, 'displayAll', @displayAll
 
   render: ->
     template = Handlebars.compile($("#item-list-template").html())
