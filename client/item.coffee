@@ -15,7 +15,7 @@ App.Collections.Items = Backbone.Collection.extend
 # default view for an item
 App.Views.ItemView = Backbone.View.extend
   initialize: ->
-    @listenTo(@model, 'change', @render)
+    @listenTo @model, 'change', @render
 
   render: ->
     template = Handlebars.compile($("#item-template").html())
@@ -26,15 +26,31 @@ App.Views.ItemView = Backbone.View.extend
 App.Views.ItemListView = Backbone.View.extend
   initialize: ->
     @listenTo @collection, 'add', @addItem
+    @listenTo App.PubSub, 'search', @displayItems
+    @listenTo App.PubSub, 'unsearch', @displayAll
 
   render: ->
     template = Handlebars.compile($("#item-list-template").html())
     @$el.html(template())
     this
 
+  displayItems: (itemIds) ->
+    items = @collection.filter (item) -> _.contains itemIds, item.id
+    @$el.empty()
+    @addAll items
+
+  displayAll: ->
+    @$el.empty()
+    @addAll @collection.models
+
   addItem: (item) ->
+    App.Indices.ItemIndex.add(item.attributes)
     itemView = new App.Views.ItemView(model: item)
     @$el.append(itemView.render().el)
+
+  addAll: (items) ->
+    for item in items
+      @addItem item
 
 # view for items on the show page
 App.Views.ItemShowView = Backbone.View.extend
@@ -42,13 +58,13 @@ App.Views.ItemShowView = Backbone.View.extend
     @listenTo(@model, 'change', @render)
 
   render: ->
-    console.log @model
     template = Handlebars.compile($("#item-show-template").html())
     @$el.html(template(@model.attributes))
     this
 
 App.Views.ItemFormView = Backbone.View.extend
   id: "item-form"
+
   events:
     submit: "save"
 
@@ -94,6 +110,7 @@ ItemRouter = Backbone.Router.extend
     listingView = new App.Views.ListingView
       itemListView: itemListView
       tagListView: tagListView
+      searchBarView: new App.Views.SearchBarView
     $("#container").html(listingView.render().el)
     items.fetch()
     tags.fetch()

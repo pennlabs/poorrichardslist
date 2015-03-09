@@ -6,6 +6,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.7/lunr.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -13,6 +14,7 @@
     <script src="js/listing.js"></script>
     <script src="js/tag.js"></script>
     <script src="js/item.js"></script>
+    <script src="js/search.js"></script>
     <title>Poor Richard's List</title>
   </head>
   <body>
@@ -30,8 +32,15 @@
   <div class="row">
     <div id="tag-list" class="two columns">
     </div>
-    <div id="item-list" class="ten columns">
+    <div id="listing-container" class="ten columns">
+      <a href="#upload" class="button button-primary">Upload Item</a>
     </div>
+  </div>
+</script>
+
+<script id="search-bar-template" type="text/x-handlebars-template">
+  <div id="search-bar">
+    <input type="text" placeholder="Search for items">
   </div>
 </script>
 
@@ -71,7 +80,8 @@
 </script>
 
 <script id="item-list-template" type="text/x-handlebars-template">
-  <a href="#upload" class="button button-primary">Upload Item</a>
+  <div id="item-list">
+  </div>
 </script>
 
 <script id="item-template" type="text/x-handlebars-template">
