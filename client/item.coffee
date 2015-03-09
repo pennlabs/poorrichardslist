@@ -19,7 +19,7 @@ App.Views.ItemView = Backbone.View.extend
 
   render: ->
     template = Handlebars.compile($("#item-template").html())
-    @$el.html(template(@model.attributes))
+    @$el.html template(@model.attributes)
     this
 
 # view for items in list format
@@ -34,8 +34,8 @@ App.Views.ItemListView = Backbone.View.extend
     @tagScope = @allItemIds()
 
   render: ->
-    template = Handlebars.compile($("#item-list-template").html())
-    @$el.html(template())
+    template = Handlebars.compile $("#item-list-template").html()
+    @$el.html template()
     this
 
   allItemIds: ->
@@ -64,11 +64,11 @@ App.Views.ItemListView = Backbone.View.extend
     @addAll items
 
   addItem: (item) ->
-    App.Indices.ItemIndex.add(item.attributes)
+    App.Indices.ItemIndex.add item.attributes
     @searchScope.push item.id
     @tagScope.push item.id
     itemView = new App.Views.ItemView(model: item)
-    @$el.append(itemView.render().el)
+    @$el.append itemView.render().el
 
   addAll: (items) ->
     for item in items
@@ -77,11 +77,11 @@ App.Views.ItemListView = Backbone.View.extend
 # view for items on the show page
 App.Views.ItemShowView = Backbone.View.extend
   initialize: ->
-    @listenTo(@model, 'change', @render)
+    @listenTo @model, 'change', @render
 
   render: ->
-    template = Handlebars.compile($("#item-show-template").html())
-    @$el.html(template(@model.attributes))
+    template = Handlebars.compile $("#item-show-template").html()
+    @$el.html template(@model.attributes)
     this
 
 App.Views.ItemFormView = Backbone.View.extend
@@ -91,8 +91,8 @@ App.Views.ItemFormView = Backbone.View.extend
     submit: "save"
 
   render: ->
-    template = Handlebars.compile($("#item-form-template-main").html())
-    @$el.html(template())
+    template = Handlebars.compile $("#item-form-template-main").html()
+    @$el.html template()
     this
 
   save: (e) ->
@@ -104,7 +104,7 @@ App.Views.ItemFormView = Backbone.View.extend
       tags: @$('input[name=tags]').val()
     @model.save data,
       success: (model, res, options) ->
-        Backbone.history.navigate("#items/#{res[0]._id}", {trigger: true})
+        Backbone.history.navigate "#items/#{res[0]._id}", {trigger: true}
       error: (model, xhr, options) ->
         errors = JSON.parse(xhr.responseText).errors
         alert "Item submit errors: #{errors}"

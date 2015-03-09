@@ -16,20 +16,20 @@ App.Router = Backbone.Router.extend
       itemListView: itemListView
       tagListView: tagListView
       searchBarView: new App.Views.SearchBarView
-    $("#container").html(listingView.render().el)
+    $("#container").html listingView.render().el
     items.fetch()
     tags.fetch()
 
   show: (id) ->
-    item = new App.Models.Item({_id: id})
+    item = new App.Models.Item(_id: id)
     item.fetch()
     itemShowView = new App.Views.ItemShowView(model: item)
-    $("#container").html(itemShowView.el)
+    $("#container").html itemShowView.el
 
   new: ->
     item = new App.Models.Item()
     itemFormView = new App.Views.ItemFormView(model: item)
-    $("#container").html(itemFormView.render().el)
+    $("#container").html itemFormView.render().el
 
 $ ->
   app = new App.Router().start()

@@ -19,8 +19,8 @@ App.Views.TagView = Backbone.View.extend
     @listenTo @model, 'change', @render
 
   render: ->
-    template = Handlebars.compile($("#tag-template").html())
-    @$el.html template(@model.attributes)
+    template = Handlebars.compile $("#tag-template").html()
+    @$el.html template @model.attributes
     this
 
   tagToggle: (e) ->
@@ -36,13 +36,13 @@ App.Views.TagListView = Backbone.View.extend
     @selectedTags = []
 
   render: ->
-    template = Handlebars.compile($("#tag-list-template").html())
-    @$el.html(template())
+    template = Handlebars.compile $("#tag-list-template").html()
+    @$el.html template()
     this
 
   addTag: (tag) ->
     tagView = new App.Views.TagView(model: tag)
-    @$el.find("#tag-list").append(tagView.render().el)
+    @$el.find("#tag-list").append tagView.render().el
 
   updateSelectedTags: (tag) ->
     if tag in @selectedTags
