@@ -1,3 +1,4 @@
+async = require 'async'
 Item = require './item'
 db = require './db'
 
@@ -33,8 +34,15 @@ app.post '/items', parseUrlencoded, (req, res) ->
     res.status(201).json result
 
 app.get '/tags', (req, res) ->
-  db.collection('tags').find({}).sort({_id: -1}).toArray (err, tags) ->
-    res.json tags
+  db.collection('tags').find({}).sort({count: -1}).toArray (err, tags) ->
+    async.map tags,
+      (tag, callback) ->
+        db.collection('items').find({tags: tag._id}).toArray (err, items) ->
+          tag.items = _.map items, (item) -> item._id
+          callback null, tag
+      (err, tags) ->
+        console.log tags
+        res.json tags
 
 app.get '/tags/:id', (req, res) ->
   db.collection('tags').findOne {_id: new BSON.ObjectID(req.params.id)},

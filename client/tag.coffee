@@ -19,6 +19,8 @@ App.Views.TagView = Backbone.View.extend
     this
 
 App.Views.TagListView = Backbone.View.extend
+  events:
+    "click .tag": select
   initialize: ->
     @listenTo @collection, 'add', @addTag
 
@@ -30,5 +32,3 @@ App.Views.TagListView = Backbone.View.extend
   addTag: (tag) ->
     tagView = new App.Views.TagView(model: tag)
     @$el.find("#tag-list").append(tagView.render().el)
-
-
