@@ -10,25 +10,58 @@ App.Collections.Tags = Backbone.Collection.extend
 
 # VIEWS
 App.Views.TagView = Backbone.View.extend
+  className: "tag"
+
+  events:
+    "click a": "tagToggle"
+
   initialize: ->
-    @listenTo(@model, 'change', @render)
+    @listenTo @model, 'change', @render
 
   render: ->
-    template = Handlebars.compile($("#tag-template").html())
-    @$el.html(template(@model.attributes))
+    template = Handlebars.compile $("#tag-template").html()
+    @$el.html template @model.attributes
     this
 
+  tagToggle: (e) ->
+    e.preventDefault()
+    $(e.currentTarget).toggleClass "selected"
+
 App.Views.TagListView = Backbone.View.extend
+  events:
+    "click a": "tagFilter"
+
   initialize: ->
     @listenTo @collection, 'add', @addTag
+    @selectedTags = []
 
   render: ->
-    template = Handlebars.compile($("#tag-list-template").html())
-    @$el.html(template())
+    template = Handlebars.compile $("#tag-list-template").html()
+    @$el.html template()
     this
 
   addTag: (tag) ->
     tagView = new App.Views.TagView(model: tag)
-    @$el.find("#tag-list").append(tagView.render().el)
+    @$el.find("#tag-list").append tagView.render().el
 
+  updateSelectedTags: (tag) ->
+    if tag in @selectedTags
+      @selectedTags = _.filter @selectedTags, (t) -> t isnt tag
+    else
+      @selectedTags.push tag
 
+  itemsWithAllSelectedTags: ->
+    items = @selectedTags[0].attributes.items
+    for t in @selectedTags.slice(1)
+      items = _.intersection items, t.attributes.items
+    items
+
+  tagFilter: (e) ->
+    e.preventDefault()
+    tag = @collection.get $(e.currentTarget).data("id")
+    @updateSelectedTags tag
+
+    if @selectedTags.length > 0
+      App.PubSub.trigger 'tagFilter', @itemsWithAllSelectedTags()
+    else
+      App.PubSub.trigger 'noTagFilter'

@@ -15,6 +15,7 @@
     <script src="js/tag.js"></script>
     <script src="js/item.js"></script>
     <script src="js/search.js"></script>
+    <script src="js/router.js"></script>
     <title>Poor Richard's List</title>
   </head>
   <body>
@@ -111,6 +112,6 @@
 </script>
 
 <script id="tag-template" type="text/x-handlebars-template">
-  <h5><a href="#tags/{{_id}}">{{name}}({{count}})</a></h5>
+  <a href="" data-id="{{_id}}">{{name}}({{count}})</a>
 </script>
 

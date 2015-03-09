@@ -19,34 +19,56 @@ App.Views.ItemView = Backbone.View.extend
 
   render: ->
     template = Handlebars.compile($("#item-template").html())
-    @$el.html(template(@model.attributes))
+    @$el.html template(@model.attributes)
     this
 
 # view for items in list format
 App.Views.ItemListView = Backbone.View.extend
   initialize: ->
     @listenTo @collection, 'add', @addItem
-    @listenTo App.PubSub, 'search', @displayItems
-    @listenTo App.PubSub, 'unsearch', @displayAll
+    @listenTo App.PubSub, 'search', @setSearchScope
+    @listenTo App.PubSub, 'nosearch', @resetSearchScope
+    @listenTo App.PubSub, 'tagFilter', @setTagScope
+    @listenTo App.PubSub, 'noTagFilter', @resetTagScope
+    @searchScope = @allItemIds()
+    @tagScope = @allItemIds()
 
   render: ->
-    template = Handlebars.compile($("#item-list-template").html())
-    @$el.html(template())
+    template = Handlebars.compile $("#item-list-template").html()
+    @$el.html template()
     this
 
-  displayItems: (itemIds) ->
+  allItemIds: ->
+    _.map @collection.models, (item) -> item.id
+
+  setSearchScope: (itemIds) ->
+    @searchScope = itemIds
+    @displayItems()
+
+  resetSearchScope: ->
+    @searchScope = @allItemIds()
+    @displayItems()
+
+  setTagScope: (itemIds) ->
+    @tagScope = itemIds
+    @displayItems()
+
+  resetTagScope: ->
+    @tagScope = @allItemIds()
+    @displayItems()
+
+  displayItems: ->
+    itemIds = _.intersection @searchScope, @tagScope
     items = @collection.filter (item) -> _.contains itemIds, item.id
     @$el.empty()
     @addAll items
 
-  displayAll: ->
-    @$el.empty()
-    @addAll @collection.models
-
   addItem: (item) ->
-    App.Indices.ItemIndex.add(item.attributes)
+    App.Indices.ItemIndex.add item.attributes
+    @searchScope.push item.id
+    @tagScope.push item.id
     itemView = new App.Views.ItemView(model: item)
-    @$el.append(itemView.render().el)
+    @$el.append itemView.render().el
 
   addAll: (items) ->
     for item in items
@@ -55,11 +77,11 @@ App.Views.ItemListView = Backbone.View.extend
 # view for items on the show page
 App.Views.ItemShowView = Backbone.View.extend
   initialize: ->
-    @listenTo(@model, 'change', @render)
+    @listenTo @model, 'change', @render
 
   render: ->
-    template = Handlebars.compile($("#item-show-template").html())
-    @$el.html(template(@model.attributes))
+    template = Handlebars.compile $("#item-show-template").html()
+    @$el.html template(@model.attributes)
     this
 
 App.Views.ItemFormView = Backbone.View.extend
@@ -69,8 +91,8 @@ App.Views.ItemFormView = Backbone.View.extend
     submit: "save"
 
   render: ->
-    template = Handlebars.compile($("#item-form-template-main").html())
-    @$el.html(template())
+    template = Handlebars.compile $("#item-form-template-main").html()
+    @$el.html template()
     this
 
   save: (e) ->
@@ -82,50 +104,8 @@ App.Views.ItemFormView = Backbone.View.extend
       tags: @$('input[name=tags]').val()
     @model.save data,
       success: (model, res, options) ->
-        Backbone.history.navigate("#items/#{res[0]._id}", {trigger: true})
+        Backbone.history.navigate "#items/#{res[0]._id}", {trigger: true}
       error: (model, xhr, options) ->
         errors = JSON.parse(xhr.responseText).errors
         alert "Item submit errors: #{errors}"
-
-#########
-# ROUTER #
-#########
-ItemRouter = Backbone.Router.extend
-  routes:
-    "": "index"
-    "items/:id": "show"
-    "upload": "new"
-
-  initialize: ->
-    # nothing yet
-
-  start: ->
-    Backbone.history.start()
-
-  index: ->
-    items = new App.Collections.Items()
-    itemListView = new App.Views.ItemListView(collection: items)
-    tags = new App.Collections.Tags()
-    tagListView = new App.Views.TagListView(collection: tags)
-    listingView = new App.Views.ListingView
-      itemListView: itemListView
-      tagListView: tagListView
-      searchBarView: new App.Views.SearchBarView
-    $("#container").html(listingView.render().el)
-    items.fetch()
-    tags.fetch()
-
-  show: (id) ->
-    item = new App.Models.Item({_id: id})
-    item.fetch()
-    itemShowView = new App.Views.ItemShowView(model: item)
-    $("#container").html(itemShowView.el)
-
-  new: ->
-    item = new App.Models.Item()
-    itemFormView = new App.Views.ItemFormView(model: item)
-    $("#container").html(itemFormView.render().el)
-
-$ ->
-  app = new ItemRouter().start()
 
