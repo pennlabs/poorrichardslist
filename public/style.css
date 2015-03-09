@@ -3,7 +3,7 @@
                  "Helvetica","Arial","Verdana","sans-serif";
 }
 
-.home_top {
+.top {
     margin-top: 18px;
     padding-top: 55px;
     padding-bottom: 50px;
@@ -12,39 +12,55 @@
     text-align: center;
 }
 
+
+#item-form {
+    text-align: center;
+}
+
+.form-content {
+    background-color: rgb(245,245,245);
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    left: 0px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.center-adjust {
+    margin-right: 135px;
+    display: inline-table;
+}
+
 #title {
     font-size: 38px;
     color: black;
     text-decoration: none;
 }
 
-#subtitle {
-    font-size: 20px;
+.subtitle {
+    font-size: 18px;
     color: black;
     text-decoration: none;
 }
 
-#item-form {
-
+.select-type {
+    font-family: Avenir;
+    margin-right: 15px;
+    font-size: 16px;
 }
-
-.item-form-container {
-    text-align: center;
-    padding-top: 40px;
-    padding-bottom: 90px;
-    margin-right: 140px;
-}
-
 
 .form-main-button {
-    border-radius: 0px;
+    border-radius: 4px;
     font-family: Avenir;
     font-style: normal;
     text-transform: none;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 18px;
     background-color: white;
     color: black;
+    height: 55px;
+    line-height: 55px;
 }
 
 .form-main-button:hover,
@@ -52,14 +68,8 @@ button:hover,
 .button:focus,
 button:focus
 {
-  background-color: rgb(155,155,155);
-  border-color: black;
+  border-color: rgb(5,5,5);
   outline: 0;
-}
-
-.select-type {
-    font-family: Avenir;
-    margin-right: 15px;
 }
 
 #search-bar {

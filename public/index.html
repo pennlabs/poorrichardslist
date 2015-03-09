@@ -19,14 +19,15 @@
   </head>
   <body>
     <div class="main">
-      <div id="container" class="container"></div>
+        <div id="container" class="container">
+        </div>
+    </div>
   </body>
 </html>
 
-
 <script id="listing-template" type="text/x-handlebars-template">
-  <div class="home_top">
-    <h2><a href="/" id="title">Poor Richard's List</a></h2>
+  <div class="top">
+        <h2><a href="/" id="title">Poor Richard's List</a></h2>
   </div>
   <div class="row">
     <div id="tag-list" class="two columns">
@@ -44,16 +45,18 @@
 </script>
 
 <script id="item-form-template-main" type="text/x-handlebars-template">
-    <div class="home_top">
-      <h2><a id="title">Sell Your Stuff</a></h2>
-      <a id="subtitle">Somebody else is looking for it</a>
-    </div>
-    <div class="item-form-container">
+  <div class="top">
+        <h2><a href="/" id="title">Sell Your Stuff</a></h2>
+        <h2 class="subtitle"> Somebody else is looking for it.</h2>
+  </div>
+  <div class="form-content">
+    <div class="center-adjust">
       <span class="select-type">Select an item type </span>
       <a class="button form-main-button" href="#"> Goods</a>
       <a class="button form-main-button" href="#"> Textbooks</a>
       <a class="button form-main-button" href="#"> Sublets</a>
     </div>
+  </div>
 </script>
 
 <script id="item-form-template-goods" type="text/x-handlebars-template">
