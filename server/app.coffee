@@ -41,13 +41,17 @@ app.get '/tags', (req, res) ->
           tag.items = _.map items, (item) -> item._id
           callback null, tag
       (err, tags) ->
-        console.log tags
         res.json tags
 
 app.get '/tags/:id', (req, res) ->
   db.collection('tags').findOne {_id: new BSON.ObjectID(req.params.id)},
     (err, tag) ->
       res.json tag
+
+app.delete '/tags/:id', (req, res) ->
+  db.collection('tags').remove {_id: new BSON.ObjectID(req.params.id)},
+    (err, result) ->
+      res.json result
 
 app.listen 8080, ->
   console.log "server started!!"

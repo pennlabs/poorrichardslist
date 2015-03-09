@@ -10,6 +10,11 @@ App.Collections.Tags = Backbone.Collection.extend
 
 # VIEWS
 App.Views.TagView = Backbone.View.extend
+  className: "tag"
+
+  events:
+    "click a": "tagToggle"
+
   initialize: ->
     @listenTo(@model, 'change', @render)
 
@@ -18,9 +23,18 @@ App.Views.TagView = Backbone.View.extend
     @$el.html(template(@model.attributes))
     this
 
+  tagToggle: (e) ->
+    e.preventDefault()
+    $(e.currentTarget).toggleClass("selected")
+    if @selected
+      App.PubSub.trigger 'tagDeselect'
+      @selected = false
+    else
+      App.PubSub.trigger 'tagSelect', @model.attributes.items
+      @selected = true
+
+
 App.Views.TagListView = Backbone.View.extend
-  events:
-    "click .tag": select
   initialize: ->
     @listenTo @collection, 'add', @addTag
 
