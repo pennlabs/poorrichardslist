@@ -16,16 +16,16 @@ App.Views.TagView = Backbone.View.extend
     "click a": "tagToggle"
 
   initialize: ->
-    @listenTo(@model, 'change', @render)
+    @listenTo @model, 'change', @render
 
   render: ->
     template = Handlebars.compile($("#tag-template").html())
-    @$el.html(template(@model.attributes))
+    @$el.html template(@model.attributes)
     this
 
   tagToggle: (e) ->
     e.preventDefault()
-    $(e.currentTarget).toggleClass("selected")
+    $(e.currentTarget).toggleClass "selected"
 
 App.Views.TagListView = Backbone.View.extend
   events:
@@ -53,7 +53,7 @@ App.Views.TagListView = Backbone.View.extend
   itemsWithAllSelectedTags: ->
     items = @selectedTags[0].attributes.items
     for t in @selectedTags.slice(1)
-      items = _.intersection(items, t.attributes.items)
+      items = _.intersection items, t.attributes.items
     items
 
   tagFilter: (e) ->
@@ -64,4 +64,4 @@ App.Views.TagListView = Backbone.View.extend
     if @selectedTags.length > 0
       App.PubSub.trigger 'tagFilter', @itemsWithAllSelectedTags()
     else
-      App.PubSub.trigger 'displayAll'
+      App.PubSub.trigger 'noTagFilter'

@@ -17,7 +17,7 @@ App.Views.SearchBarView = Backbone.View.extend
       App.PubSub.trigger 'search', itemIds
       @searched = true
     else if @searched
-      App.PubSub.trigger 'unsearch'
+      App.PubSub.trigger 'nosearch'
       @searched = false
 
   render: ->

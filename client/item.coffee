@@ -26,27 +26,47 @@ App.Views.ItemView = Backbone.View.extend
 App.Views.ItemListView = Backbone.View.extend
   initialize: ->
     @listenTo @collection, 'add', @addItem
-    @listenTo App.PubSub, 'search', @displayItems
-    @listenTo App.PubSub, 'unsearch', @displayAll
-    @listenTo App.PubSub, 'tagFilter', @displayItems
-    @listenTo App.PubSub, 'displayAll', @displayAll
+    @listenTo App.PubSub, 'search', @setSearchScope
+    @listenTo App.PubSub, 'nosearch', @resetSearchScope
+    @listenTo App.PubSub, 'tagFilter', @setTagScope
+    @listenTo App.PubSub, 'noTagFilter', @resetTagScope
+    @searchScope = @allItemIds()
+    @tagScope = @allItemIds()
 
   render: ->
     template = Handlebars.compile($("#item-list-template").html())
     @$el.html(template())
     this
 
-  displayItems: (itemIds) ->
+  allItemIds: ->
+    _.map @collection.models, (item) -> item.id
+
+  setSearchScope: (itemIds) ->
+    @searchScope = itemIds
+    @displayItems()
+
+  resetSearchScope: ->
+    @searchScope = @allItemIds()
+    @displayItems()
+
+  setTagScope: (itemIds) ->
+    @tagScope = itemIds
+    @displayItems()
+
+  resetTagScope: ->
+    @tagScope = @allItemIds()
+    @displayItems()
+
+  displayItems: ->
+    itemIds = _.intersection @searchScope, @tagScope
     items = @collection.filter (item) -> _.contains itemIds, item.id
     @$el.empty()
     @addAll items
 
-  displayAll: ->
-    @$el.empty()
-    @addAll @collection.models
-
   addItem: (item) ->
     App.Indices.ItemIndex.add(item.attributes)
+    @searchScope.push item.id
+    @tagScope.push item.id
     itemView = new App.Views.ItemView(model: item)
     @$el.append(itemView.render().el)
 
