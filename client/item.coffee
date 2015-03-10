@@ -65,6 +65,10 @@ App.Views.ItemShowView = Backbone.View.extend
 App.Views.ItemFormView = Backbone.View.extend
   id: "item-form"
 
+  initialize: (options) ->
+    @model = options.model
+    @type = options.type
+    
   events:
     submit: "save"
 
@@ -94,7 +98,7 @@ ItemRouter = Backbone.Router.extend
   routes:
     "": "index"
     "items/:id": "show"
-    "upload": "new"
+    "upload(/:type)": "new"
 
   initialize: ->
     # nothing yet
@@ -121,9 +125,9 @@ ItemRouter = Backbone.Router.extend
     itemShowView = new App.Views.ItemShowView(model: item)
     $("#container").html(itemShowView.el)
 
-  new: ->
+  new: (type) ->
     item = new App.Models.Item()
-    itemFormView = new App.Views.ItemFormView(model: item)
+    itemFormView = new App.Views.ItemFormView(model: item, type: type)
     $("#container").html(itemFormView.render().el)
 
 $ ->
