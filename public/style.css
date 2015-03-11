@@ -85,3 +85,13 @@ button:focus
 #search-bar {
   padding-bottom: 15px;
 }
+
+.tag {
+  font-size: 20px;
+  padding-bottom: 15px;
+}
+
+.selected {
+  background-color: #C7E7F0;
+}
+
