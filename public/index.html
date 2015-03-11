@@ -53,11 +53,30 @@
   <div class="form-background">
     <div class="form-content">
       <span class="select-type">Select an item type</span>
-        <a class="button form-main-button" href="#upload/goods"> Goods</a>
-        <a class="button form-main-button" href="#upload/textbooks"> Textbooks</a>
-        <a class="button form-main-button" href="#upload/sublets"> Sublets</a>
+      <a class="button form-main-button" href="#upload/goods"> Goods</a>
+      <a class="button form-main-button" href="#upload/textbooks"> Textbooks</a>
+      <a class="button form-main-button" href="#upload/sublets"> Sublets</a>
+      <div id="type-form"></div>
     </div>
   </div>
+</script>
+
+<script id="goods-form-template" type="text/x-handlebars-template">
+  <form action="/items" method="post">
+    <div class="field">
+      Name: <input name="name" placeholder="Mountain bike">
+    </div>
+    <div class="field">
+      Description: <input name="desc" placeholder="Amazing condition">
+    </div>
+    <div class="field">
+      Price: <input name="price" type="number" placeholder="100">
+    </div>
+    <div class="field">
+      Tags: <input name="tags" placeholder="#bike #easylife">
+    </div>
+    <input type="submit">
+  </form>
 </script>
 
 <script id="item-form-template-goods" type="text/x-handlebars-template">

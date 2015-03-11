@@ -88,16 +88,20 @@ App.Views.ItemFormView = Backbone.View.extend
   id: "item-form"
 
   initialize: (options) ->
-    @model = options.model
     @type = options.type
+
+  render: ->
+    @$el.html Handlebars.compile($("#item-form-template-main").html())
+    if @type
+      template = Handlebars.compile $("##{@type}-form-template").html()
+      @$el.find("#type-form").html template()
+    this
+
+App.Views.GoodFormView = Backbone.View.extend
+  id: "good-form"
 
   events:
     submit: "save"
-
-  render: ->
-    template = Handlebars.compile $("#item-form-template-main").html()
-    @$el.html template()
-    this
 
   save: (e) ->
     e.preventDefault()
