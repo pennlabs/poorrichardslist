@@ -6,6 +6,7 @@ To Get Started:
    json --file seed.json --jsonArray`.
 4. Install coffeescript globally `npm install -g coffee-script`.
 5. Install grunt globally `sudo npm install -g grunt-cli`.
-6. Run grunt to continuously compile html and coffeescript files `grunt watch`.
-7. Install supervisor globally `npm install supervisor`
-8. Run server via supervisor `supervisor server/app.coffee`.
+6. After confirming Ruby installation `ruby -v`, install Sass `gem install sass`.
+7. Run grunt to continuously compile html and coffeescript files `grunt watch`.
+8. Install supervisor globally `npm install supervisor`
+9. Run server via supervisor `supervisor server/app.coffee`.

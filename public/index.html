@@ -52,12 +52,12 @@
   </div>
   <div class="form-background">
     <div class="form-content">
-      <span class="select-type">Select an item type</span>
-      <a class="button form-main-button" href="#upload/goods"> Goods</a>
-      <a class="button form-main-button" href="#upload/textbooks"> Textbooks</a>
-      <a class="button form-main-button" href="#upload/sublets"> Sublets</a>
+      <span id="select-instruction">Select an item type</span>
+      <a id="#select-goods" class="button form-main-button" href="#upload/goods"> Goods</a>
+      <a id="#select-textbooks" class="button form-main-button" href="#upload/textbooks"> Textbooks</a>
+      <a id="#select-sublets" class="button form-main-button" href="#upload/sublets"> Sublets</a>
       <div id="type-form"></div>
-    </div>
+    </div>  
   </div>
 </script>
 
@@ -77,34 +77,6 @@
     </div>
     <input type="submit">
   </form>
-</script>
-
-<script id="item-form-template-goods" type="text/x-handlebars-template">
-  <div class="form-background">
-    <form action="/items" method="post">
-        <div class="row">
-          <div class="six columns">
-            <label for="exampleEmailInput">Your email</label>
-            <input name="name"class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
-          </div>
-          <div class="six columns">
-            <label for="exampleRecipientInput">Reason for contacting</label>
-            <select class="u-full-width" id="exampleRecipientInput">
-              <option value="Option 1">Questions</option>
-              <option value="Option 2">Admiration</option>
-              <option value="Option 3">Can I geet your number?</option>
-            </select>
-          </div>
-        </div>
-        <label for="exampleMessage">Message</label>
-        <textarea class="u-full-width" placeholder="Hi Dave …" id="exampleMessage"></textarea>
-        <label class="example-send-yourself-copy">
-          <input type="checkbox">
-          <span class="label-body">Send a copy to yourself</span>
-        </label>
-        <input class="button-primary" type="submit" value="Submit">
-      </form>
-    </div>
 </script>
 
 <script id="item-list-template" type="text/x-handlebars-template">

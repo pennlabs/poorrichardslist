@@ -95,6 +95,9 @@ App.Views.ItemFormView = Backbone.View.extend
     if @type
       template = Handlebars.compile $("##{@type}-form-template").html()
       @$el.find("#type-form").html template()
+      # hiding the first instruction and thinking about 
+      @$el.find("#select-instruction").addClass('form-hide-text')
+      @$el.find("##{@type}").hide()
     this
 
 App.Views.GoodFormView = Backbone.View.extend

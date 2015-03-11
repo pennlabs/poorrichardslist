@@ -25,6 +25,7 @@
 }
 
 
+// FORMS
 .form-background {
     background-color: rgb(245,245,245);
     position: fixed;
@@ -40,10 +41,14 @@
     margin-bottom: 100px;
 }
 
-.select-type {
+#select-instruction {
     font-family: Avenir;
     margin-right: 15px;
     font-size: 16px;
+}
+
+.form-hide-text {
+  color: rgb(245,245,245)
 }
 
 .form-main-button {
@@ -69,12 +74,12 @@ button:focus
 }
 
 @media(max-width: 720px) {
-    .center-adjust {
+    .form-content {
         margin-right: 0px;
         margin-top: 75px;
         margin-bottom: 75px;
     }
-    .select-type {
+    #select-instruction {
         margin-right: 0px;
     }
     .form-main-button {
@@ -82,6 +87,21 @@ button:focus
     }
 }
 
+#type-form {
+  text-align: left;
+  margin-left: 150px;
+  margin-top: 20px; 
+  .field {
+    padding-bottom: 10px;
+  }
+  input {
+    margin-top: 10px;
+  }
+}
+
+
+
+// APP
 #search-bar {
   padding-bottom: 15px;
 }
@@ -94,17 +114,3 @@ button:focus
 .selected {
   background-color: #C7E7F0;
 }
-
-#type-form {
-  text-align: left;
-  margin-left: 150px;
-  margin-top: 20px;
-  .field {
-    padding-bottom: 10px;
-  }
-  input {
-    margin-top: 10px;
-  }
-}
-
-
