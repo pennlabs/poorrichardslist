@@ -95,3 +95,16 @@ button:focus
   background-color: #C7E7F0;
 }
 
+#type-form {
+  text-align: left;
+  margin-left: 150px;
+  margin-top: 20px;
+  .field {
+    padding-bottom: 10px;
+  }
+  input {
+    margin-top: 10px;
+  }
+}
+
+
