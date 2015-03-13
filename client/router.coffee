@@ -27,7 +27,7 @@ App.Router = Backbone.Router.extend
     $("#container").html itemShowView.el
 
   new: (type) ->
-    item = new App.Models.Item()
+    item = new App.Models.Item(type: type)
     itemFormView = new App.Views.ItemFormView(model: item, type: type)
     $("#container").html itemFormView.render().el
 

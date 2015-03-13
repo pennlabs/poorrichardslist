@@ -32,7 +32,7 @@
 }
 
 .form-content {
-  margin-right: 155px;
+  margin-right: 170px;
   display: inline-table;
   margin-top: 100px;
   margin-bottom: 100px;
@@ -41,7 +41,7 @@
 #select-instruction {
   font-family: Avenir;
   margin-right: 15px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .form-hide-text {
@@ -84,16 +84,49 @@ button:focus {
     display: block;
   }
 }
+#goods-instruction {
+  font-family: Avenir;
+  font-size: 18px;
+}
+
 #type-form {
   text-align: left;
-  margin-left: 150px;
   margin-top: 20px;
+  margin-right: 210px;
 }
-#type-form .field {
-  padding-bottom: 10px;
+#type-form .five.columns {
+  margin-top: 80px;
 }
-#type-form input {
-  margin-top: 10px;
+#type-form label {
+  font-family: Helvetica;
+  font-size: 16px;
+  font-weight: 300;
+}
+#type-form input[type=text] {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+#type-form input[type=price] {
+  font-size: 14px;
+}
+#type-form input[type=submit] {
+  margin-top: 110px;
+  color: white;
+  background-color: #f44336;
+  border-color: #f44336;
+  text-transform: none;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-weight: 300;
+  font-size: 15px;
+  opacity: .67;
+  height: 30px;
+  line-height: 30px;
+  font-family: Helvetica;
+}
+#type-form textarea {
+  height: 110px;
+  font-size: 14px;
 }
 
 #search-bar {

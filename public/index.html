@@ -47,7 +47,7 @@
 
 <script id="item-form-template-main" type="text/x-handlebars-template">
   <div class="top">
-        <h2><a href="/" id="title">Sell Your Stuff</a></h2>
+        <h2><a id="title">Sell Your Stuff</a></h2>
         <h2 class="subtitle"> Somebody else is looking for it.</h2>
   </div>
   <div class="form-background">
@@ -62,21 +62,40 @@
 </script>
 
 <script id="goods-form-template" type="text/x-handlebars-template">
-  <form action="/items" method="post">
-    <div class="field">
-      Name: <input name="name" type="text" placeholder="Mountain bike">
+  <div class="row">
+    <div class="five columns">
+      <span id="goods-instruction">Add details about your goods</span>
     </div>
-    <div class="field">
-      Description: <input name="desc" type="text" placeholder="Amazing condition">
-    </div>
-    <div class="field">
-      Price: <input name="price" type="number" placeholder="100">
-    </div>
-    <div class="field">
-      Tags: <input name="tags" type="text" placeholder="#bike #easylife">
-    </div>
-    <input type="submit">
-  </form>
+    <div class="seven columns">
+      <form action="/items" method="post">
+        <div class="row">
+          <div class="nine columns">
+            <label for="tags">Add tags to your goods</label>
+                <input name="tags" class="u-full-width" type="text" placeholder="#bike #easylife" id="tags">
+          </div>
+        </div>
+        <div class="row">
+          <div class="nine columns">
+            <label for="name">Post name</label>
+            <input name="name" class="u-full-width" type="text" placeholder="Mountain bike" id="name">
+          </div>
+          <div class="three columns">
+            <label for="price">Price</label>
+            <input name="price" class="u-full-width" type="number" placeholder="85" id="price">
+          </div>
+        </div>
+        <div class="row">
+          <div class="nine columns">
+            <label for="desribe">Describe your goods</label>
+            <textarea name="desc" class="u-full-width" placeholder="Amazing condition" id="describe"></textarea>
+          </div>
+          <div class="two columns">
+            <input type="submit" value="Submit Post">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </script>
 
 <script id="item-list-template" type="text/x-handlebars-template">
