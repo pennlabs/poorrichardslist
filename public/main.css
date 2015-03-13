@@ -29,13 +29,19 @@
   text-align: center;
   width: 100%;
   left: 0px;
+  overflow: scroll;
+  padding-top: 100px;
+  padding-bottom: 80px;
 }
 
 .form-content {
   margin-right: 170px;
+}
+
+.select-form {
   display: inline-table;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  width: 574px;
+  margin-left: 15px;
 }
 
 #select-instruction {
@@ -46,6 +52,10 @@
 
 .form-hide-text {
   color: whitesmoke;
+}
+
+.form-buttons {
+  display: inline-table;
 }
 
 .form-main-button {
@@ -69,33 +79,38 @@ button:focus {
   outline: 0;
 }
 
-@media (max-width: 720px) {
-  .form-content {
-    margin-right: 0px;
-    margin-top: 75px;
-    margin-bottom: 75px;
-  }
-
-  #select-instruction {
-    margin-right: 0px;
+@media (max-width: 550px) {
+  .form-background {
+    padding-top: 50px;
   }
 
   .form-main-button {
-    display: block;
+    width: 310px;
+  }
+
+  #type-form {
+    margin-top: 0px;
   }
 }
-#goods-instruction {
+.form-instruction {
   font-family: Avenir;
   font-size: 18px;
+  margin-top: 80px;
 }
 
 #type-form {
   text-align: left;
+  width: 800px;
   margin-top: 20px;
-  margin-right: 210px;
 }
-#type-form .five.columns {
-  margin-top: 80px;
+#type-form .four.columns {
+  margin-left: 0px;
+}
+#type-form .box-width {
+  width: 310px;
+}
+#type-form .price-width {
+  width: 60px;
 }
 #type-form label {
   font-family: Helvetica;
@@ -107,7 +122,11 @@ button:focus {
   font-size: 14px;
 }
 #type-form input[type=price] {
+  margin-bottom: 15px;
   font-size: 14px;
+}
+#type-form input[type=number] {
+  margin-bottom: 15px;
 }
 #type-form input[type=submit] {
   margin-top: 110px;

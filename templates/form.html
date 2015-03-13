@@ -5,48 +5,52 @@
   </div>
   <div class="form-background">
     <div class="form-content">
-      <span id="select-instruction">Select an item type</span>
-      <a id="#select-goods" class="button form-main-button" href="#upload/goods"> Goods</a>
-      <a id="#select-textbooks" class="button form-main-button" href="#upload/textbooks"> Textbooks</a>
-      <a id="#select-sublets" class="button form-main-button" href="#upload/sublets"> Sublets</a>
-    </div>  
-    <div id="type-form"></div>
+      <div class="select-form">
+        <span id="select-instruction">Select an item type</span>
+        <div class="form-buttons">
+          <a id="#select-goods" class="button form-main-button" href="#upload/goods"> Goods</a>
+          <a id="#select-textbooks" class="button form-main-button" href="#upload/textbooks"> Textbooks</a>
+          <a id="#select-sublets" class="button form-main-button" href="#upload/sublets"> Sublets</a> 
+        </div>
+      </div>
+      <div id="type-form"></div>
+    </div>
   </div>
 </script>
 
 <script id="goods-form-template" type="text/x-handlebars-template">
-  <div class="row">
-    <div class="five columns">
-      <span id="goods-instruction">Add details about your goods</span>
-    </div>
-    <div class="seven columns">
-      <form action="/items" method="post">
-        <div class="row">
-          <div class="nine columns">
-            <label for="tags">Add tags to your goods</label>
-                <input name="tags" class="u-full-width" type="text" placeholder="#bike #easylife" id="tags">
-          </div>
-        </div>
-        <div class="row">
-          <div class="nine columns">
-            <label for="name">Post name</label>
-            <input name="name" class="u-full-width" type="text" placeholder="Mountain bike" id="name">
-          </div>
-          <div class="three columns">
-            <label for="price">Price</label>
-            <input name="price" class="u-full-width" type="number" placeholder="85" id="price">
-          </div>
-        </div>
-        <div class="row">
-          <div class="nine columns">
-            <label for="desribe">Describe your goods</label>
-            <textarea name="desc" class="u-full-width" placeholder="Amazing condition" id="describe"></textarea>
-          </div>
-          <div class="two columns">
-            <input type="submit" value="Submit Post">
-          </div>
-        </div>
+    <div class="row">
+      <div class="four columns form-instruction">
+        <span id="form-instruction">Add details about your goods</span>
       </div>
-    </form>
-  </div>
-</script>
+      <div class="eight columns">
+        <form action="/items" method="post">
+          <div class="row">
+            <div class="eight columns">
+              <label for="tags">Add tags to your goods</label>
+                  <input name="tags" class="box-width" type="text" placeholder="#bike #easylife" id="tags">
+            </div>
+          </div>
+          <div class="row">
+            <div class="eight columns">
+              <label for="name">Post name</label>
+              <input name="name" class="box-width" type="text" placeholder="Mountain bike" id="name">
+            </div>
+            <div class="four columns">
+              <label for="price">Price</label>
+              <input name="price" class="price-width" type="number" placeholder="85" id="price">
+            </div>
+          </div>
+          <div class="row">
+            <div class="eight columns">
+              <label for="desribe">Describe your goods</label>
+              <textarea name="desc" class="box-width" placeholder="Amazing condition" id="describe"></textarea>
+            </div>  
+            <div class="four columns">
+              <input type="submit" value="Submit Post">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</script> 
