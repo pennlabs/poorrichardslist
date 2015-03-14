@@ -154,7 +154,7 @@ App.Views.SubletsFormView = Backbone.View.extend
     data =
       name: @$('input[name=name]').val()
       desc: @$('input[name=desc]').val()
-      price: @$('input[name=rent]').val()
+      price: @$('input[name=price]').val()
       tags: @$('input[name=tags]').val()
       roomType: @$('input[name=room-type]').val()
       type: 'sublets'

@@ -1,0 +1,21 @@
+[
+{ "_id" : ObjectId("5504a8fe6083c3c434b7213c"), "tags" : [ ObjectId("5504a8fda4be6559cdf438eb"), ObjectId("5504a8fea4be6559cdf438ec") ], "name" : "Mountain Bike", "price" : "85", "desc" : "Great tread for the winters. Really lightweight and only used it for a couple of semesters. Really fair price!!" },
+{ "_id" : ObjectId("5504a9696083c3c434b7213d"), "tags" : [ ObjectId("5504a969a4be6559cdf438ed"), ObjectId("5504a969a4be6559cdf438ee"), ObjectId("5504a969a4be6559cdf438ef") ], "name" : "Cheap 5th Generation iPad", "price" : "150", "desc" : "32GB. No scratches, check out the images." },
+{ "_id" : ObjectId("5504a9b56083c3c434b7213e"), "tags" : [ ObjectId("5504a9b5a4be6559cdf438f0"), ObjectId("5504a9b5a4be6559cdf438f1"), ObjectId("5504a9b5a4be6559cdf438f2") ], "name" : "Need to clean a microwave", "price" : "30", "desc" : "Will pay hefty sum to anyone who knows how to really, really clean a microwave." },
+{ "_id" : ObjectId("5504a9d86083c3c434b7213f"), "tags" : [ ObjectId("5504a9d8a4be6559cdf438f3"), ObjectId("5504a9b5a4be6559cdf438f2"), ObjectId("5504a9d8a4be6559cdf438f4") ], "name" : "Eureka Airspeed One vacuum", "price" : "45", "desc" : "In good condition." },
+{ "_id" : ObjectId("5504a9f96083c3c434b72140"), "tags" : [ ObjectId("5504a9f9a4be6559cdf438f5"), ObjectId("5504a9f9a4be6559cdf438f6") ], "name" : "Cosco step ladder", "price" : "10", "desc" : "Used for a year. Works fine." },
+{ "_id" : ObjectId("5504aa446083c3c434b72141"), "tags" : [ ObjectId("5504aa44a4be6559cdf438f7"), ObjectId("5504aa44a4be6559cdf438f8"), ObjectId("5504aa44a4be6559cdf438f9") ], "room-type" : "One BR", "price" : "800", "name" : "44th and Walnut", "rent" : "375", "desc" : "One bedroom available on 44 and walnut corner: available immediately until end of august for the whole or part of the duration. Within availability for Drexel and Penn transport services.Complete privacy, safe. Heating and gas included in the unit." },
+{ "_id" : ObjectId("5504aa7d6083c3c434b72142"), "tags" : [ ObjectId("5504aa7da4be6559cdf438fa"), ObjectId("5504aa7da4be6559cdf438fb") ], "course" : "STAT 001", "price" : "25", "name" : "Statistics For Dummies", "authors" : "Jim McDougal", "desc" : "Selling Statistics for Dummies. Like new. Message if interested." },
+{ "_id" : ObjectId("5504aad46083c3c434b72143"), "tags" : [ ObjectId("5504a8fea4be6559cdf438ec"), ObjectId("5504aad4a4be6559cdf438fc"), ObjectId("5504aad4a4be6559cdf438fd"), ObjectId("5504aad4a4be6559cdf438fe") ], "name" : "Earwarmers", "price" : "10", "desc" : "Never wear these. Would be great for walks to class. " },
+{ "_id" : ObjectId("5504aafa6083c3c434b72144"), "tags" : [ ObjectId("5504a8fda4be6559cdf438eb") ], "name" : "Schwinn Road Bike", "price" : "100", "desc" : "Really lightweight bike with a basket on the back." },
+{ "_id" : ObjectId("5504ab1a6083c3c434b72145"), "tags" : [ ObjectId("5504a8fea4be6559cdf438ec") ], "name" : "Xbox elite", "price" : "125", "desc" : "selling a 250 GB black Xbox elite with controllers and wifi thingy will throw in black ops and possibly one other game. Message me with offers" },
+{ "_id" : ObjectId("5504ab416083c3c434b72146"), "tags" : [ ObjectId("5504a8fda4be6559cdf438eb"), ObjectId("5504ab41a4be6559cdf438ff") ], "name" : "Unicycle", "price" : "45", "desc" : "Bought it for a show last fall, need to get rid of it! " },
+{ "_id" : ObjectId("5504ab876083c3c434b72147"), "tags" : [ ObjectId("5504aa44a4be6559cdf438f7"), ObjectId("5504aa44a4be6559cdf438f8"), ObjectId("5504aad4a4be6559cdf438fe") ], "room-type" : "Single", "price" : "999", "name" : "4044 Walnut", "rent" : "300", "desc" : "I really need a subletter for this summer! Really clean and you'll probably have the whole place to yourself :)" },
+{ "_id" : ObjectId("5504abb26083c3c434b72148"), "tags" : [ ObjectId("5504abb2a4be6559cdf43900") ], "course" : "BIBB 109", "price" : "65", "name" : "Neuroscience: Exploring the Brain", "authors" : "Mark F. Bear", "desc" : "I bought it last semester and I probably opened it two times. " },
+{ "_id" : ObjectId("5504ac226083c3c434b72149"), "tags" : [ ObjectId("5504a8fda4be6559cdf438eb"), ObjectId("5504ac22a4be6559cdf43901") ], "name" : "Cannondale Mountain Bike + Pump", "price" : "150", "desc" : "I use this on trails outside Philly but it would also be a great all-purpose bike. Comes with a free pump!" }
+]
+
+
+
+
+
