@@ -112,6 +112,29 @@ App.Views.GoodFormView = Backbone.View.extend
       desc: @$('input[name=desc]').val()
       price: @$('input[name=price]').val()
       tags: @$('input[name=tags]').val()
+      type: 'goods'
+    @model.save data,
+      success: (model, res, options) ->
+        Backbone.history.navigate "#items/#{res[0]._id}", {trigger: true}
+      error: (model, xhr, options) ->
+        errors = JSON.parse(xhr.responseText).errors
+        alert "Item submit errors: #{errors}"
+
+App.Views.SubletFormView = Backbone.View.extend
+  id: "sublet-form"
+
+  events:
+    submit: "save"
+
+  save: (e) ->
+    e.preventDefault()
+    data =
+      name: @$('input[name=location]').val()
+      desc: @$('input[name=desc]').val()
+      price: @$('input[name=rent]').val()
+      tags: @$('input[name=tags]').val()
+      roomType: @$('input[name=room-type]').val()
+      type: 'sublets'
     @model.save data,
       success: (model, res, options) ->
         Backbone.history.navigate "#items/#{res[0]._id}", {trigger: true}
