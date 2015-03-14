@@ -4,16 +4,14 @@
         <h2 class="subtitle"> Somebody else is looking for it.</h2>
   </div>
   <div class="form-background">
-    <div class="form-content">
-      <!--<div class="select-form"> -->
-        <div class="form-buttons">
+    <div class="center-adjust">
+      <div class="form-content">
         <span id="select-instruction">Select an item type</span>
-          <a id="#select-goods" class="button form-main-button" href="#upload/goods"> Goods</a>
-          <a id="#select-textbooks" class="button form-main-button" href="#upload/textbooks"> Textbooks</a>
-          <a id="#select-sublets" class="button form-main-button" href="#upload/sublets"> Sublets</a> 
+        <a id="#select-goods" class="button form-main-button" href="#upload/goods"> Goods</a>
+        <a id="#select-textbooks" class="button form-main-button" href="#upload/textbooks"> Textbooks</a>
+        <a id="#select-sublets" class="button form-main-button" href="#upload/sublets"> Sublets</a> 
         <div id="type-form"></div>
-        </div>
-      <!-- </div> -->
+      </div>
     </div>
   </div>
 </script>
@@ -54,3 +52,45 @@
       </div>
     </div>
 </script> 
+
+<script id="sublets-form-template" type="text/x-handlebars-template">
+    <div class="row">
+      <div class="four columns form-instruction">
+        <span id="form-instruction">Add details about your place</span>
+      </div>
+      <div class="eight columns">
+        <form action="/items" method="post">
+          <div class="row">
+            <div class="eight columns">
+              <label for="tags">Add tags to your place</label>
+                  <input name="tags" class="box2-width" type="text" placeholder="#Radian #cheap" id="tags">
+            </div>
+            <div class="four columns">
+              <label for="room-type">Room Type</label>
+              <input name="room-type" class="room-type-width" type="text" placeholder="Single" id="room-type">
+            </div>
+          </div>
+          <div class="row">
+            <div class="eight columns">
+              <label for="location">Location</label>
+              <input name="location" class="box2-width" type="text" placeholder="4044 Walnut" id="location">
+            </div>
+            <div class="four columns">
+              <label for="rent">Monthly Rent</label>
+              <input name="rent" class="rent-width" type="number" placeholder="850" id="rent">
+            </div>
+          </div>
+          <div class="row">
+            <div class="eight columns">
+              <label for="desribe">Describe your place</label>
+              <textarea name="desc" class="box2-width" placeholder="Pretty big, great location and a really nice kitchen." id="describe"></textarea>
+            </div>  
+            <div class="four columns">
+              <input type="submit" value="Submit Post">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</script> 
+

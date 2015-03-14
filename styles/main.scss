@@ -32,12 +32,13 @@
     text-align: center;
     width: 100%;
     left: 0px;
-    overflow: scroll;
     padding-top: 100px;
     padding-bottom: 80px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-.form-content {
+.center-adjust {
     margin-right: 170px;
 }
 
@@ -54,7 +55,7 @@
   color: rgb(245,245,245)
 }
 
-.form-buttons {
+.form-content {
   display: inline-table;
 }
 
@@ -90,14 +91,24 @@ button:focus
   text-align: left;
   width: 800px;
   margin-top: 20px;
+  margin-left: 15px;
   .four.columns {
     margin-left: 0px;
   }
   .box-width {
     width: 310px;
   }
+  .box2-width {
+    width: 300px;
+  }
   .price-width {
     width: 60px;
+  }
+  .room-type-width {
+    width: 80px;
+  }
+  .rent-width {
+    width: 80px;
   }
   label {
     font-family: Helvetica;
@@ -142,12 +153,13 @@ button:focus
     }
     #type-form {
       margin-top: -55px;
+      margin-left: 0px;
     }
     .form-instruction {
       padding-left: 35px;
       margin-bottom: 10px;
     }
-    .form-buttons {
+    .form-content {
       margin-left: 20%;
       display: block;
     }
