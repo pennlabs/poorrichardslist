@@ -94,13 +94,13 @@ App.Views.ItemFormView = Backbone.View.extend
     @$el.html Handlebars.compile($("#item-form-template-main").html())
     if @type
       template = Handlebars.compile $("##{@type}-form-template").html()
-      @$el.find("#type-form").html template(@model.attributes)
-      
+      @$el.find("#type-form").html template(@model.attributes) 
+      @$el.find("#type-form").addClass('textbooks-adjust') if @type =='textbooks'
       @$el.find("#select-instruction").addClass('form-hide-text')
     this
 
-App.Views.GoodFormView = Backbone.View.extend
-  id: "good-form"
+App.Views.GoodsFormView = Backbone.View.extend
+  id: "goods-form"
 
   events:
     submit: "save"
@@ -120,8 +120,8 @@ App.Views.GoodFormView = Backbone.View.extend
         errors = JSON.parse(xhr.responseText).errors
         alert "Item submit errors: #{errors}"
 
-App.Views.SubletFormView = Backbone.View.extend
-  id: "sublet-form"
+App.Views.TextbooksFormView = Backbone.View.extend
+  id: "textbooks-form"
 
   events:
     submit: "save"
@@ -129,7 +129,30 @@ App.Views.SubletFormView = Backbone.View.extend
   save: (e) ->
     e.preventDefault()
     data =
-      name: @$('input[name=location]').val()
+      name: @$('input[name=name]').val()
+      desc: @$('input[name=desc]').val()
+      price: @$('input[name=price]').val()
+      tags: @$('input[name=tags]').val()
+      course: @$('input[name=course]').val()
+      authors: @$('input[name=authors]').val()
+      type: 'textbooks'
+    @model.save data,
+      success: (model, res, options) ->
+        Backbone.history.navigate "#items/#{res[0]._id}", {trigger: true}
+      error: (model, xhr, options) ->
+        errors = JSON.parse(xhr.responseText).errors
+        alert "Item submit errors: #{errors}"
+
+App.Views.SubletsFormView = Backbone.View.extend
+  id: "sublets-form"
+
+  events:
+    submit: "save"
+
+  save: (e) ->
+    e.preventDefault()
+    data =
+      name: @$('input[name=name]').val()
       desc: @$('input[name=desc]').val()
       price: @$('input[name=rent]').val()
       tags: @$('input[name=tags]').val()
@@ -141,3 +164,5 @@ App.Views.SubletFormView = Backbone.View.extend
       error: (model, xhr, options) ->
         errors = JSON.parse(xhr.responseText).errors
         alert "Item submit errors: #{errors}"
+
+

@@ -1,6 +1,13 @@
+$font-stack: 'Open Sans', 'Ubuntu', 'Lato', 'Asap', 'Raleway', 'sans-serif';
+
+$title-font: 'Lato', sans-serif;
+$subtitle-font: 'Ubuntu', sans-serif;
+
+$form-font: 'Open Sans', sans-serif;
+$form-label-font: 'Ubuntu', sans-serif;
+
 .main {
-    font-family: "Myriad Set Pro","Lucida Grande","Helvetica Neue",
-                 "Helvetica","Arial","Verdana","sans-serif";
+    font-family: $font-stack;
 }
 
 .top {
@@ -13,12 +20,15 @@
 }
 
 #title {
-    font-size: 38px;
+    font-family: $title-font;
+    font-size: 40px;
+    font-weight: 300;
     color: black;
     text-decoration: none;
 }
 
 .subtitle {
+    font-family: $subtitle-font;
     font-size: 18px;
     color: black;
     text-decoration: none;
@@ -26,8 +36,9 @@
 
 
 // FORMS
+$background-color: rgb(245,245,245);
 .form-background {
-    background-color: rgb(245,245,245);
+    background-color: $background-color;
     position: fixed;
     text-align: center;
     width: 100%;
@@ -46,13 +57,14 @@
     display: inline-table;
 }
 #select-instruction {
-    font-family: Avenir;
+    font-family: $form-font;
     margin-right: 15px;
     font-size: 18px;
 }
 
+
 .form-hide-text {
-  color: rgb(245,245,245)
+  color: $background-color;
 }
 
 .form-content {
@@ -61,7 +73,7 @@
 
 .form-main-button {
     border-radius: 4px;
-    font-family: Avenir;
+    font-family: $form-font;
     font-style: normal;
     text-transform: none;
     font-weight: 400;
@@ -82,36 +94,53 @@ button:focus
 }
 
 .form-instruction {
-    font-family: Avenir;
+    font-family: $form-font;
     font-size: 18px;
     margin-top: 80px;
 }
 
+.textbooks-adjust {
+    padding-right: 155px;
+}
+
 #type-form {
   text-align: left;
-  width: 800px;
+  width: 803px;
   margin-top: 20px;
-  margin-left: 15px;
+  padding-left: 15px;
   .four.columns {
     margin-left: 0px;
   }
-  .box-width {
+  .row.five.columns {
+    margin-left: 0px;
+  }
+  .textbooks-type-form {
+    width: 879px;
+  }
+  .goods-box {
     width: 310px;
   }
-  .box2-width {
-    width: 300px;
+  $tb-sub-box-width: 300px;
+  .sublets-box {
+    width: $tb-sub-box-width;
+  }
+  .textbooks-box {
+    width: $tb-sub-box-width;
   }
   .price-width {
-    width: 60px;
+    width: 65px;
   }
-  .room-type-width {
-    width: 80px;
+  .sublets-small-box {
+    width: 90px;
   }
-  .rent-width {
-    width: 80px;
+  .course-width {
+    width: 110px;
+  }
+  .authors-width {
+    width: 200px;
   }
   label {
-    font-family: Helvetica;
+    font-family: $form-label-font;
     font-size: 16px;
     font-weight: 300;
   }
@@ -139,7 +168,7 @@ button:focus
     opacity: .67;
     height: 30px;
     line-height: 30px;
-    font-family: Helvetica;
+    font-family: $form-label-font;
   }
   textarea {
     height: 110px;
@@ -153,7 +182,7 @@ button:focus
     }
     #type-form {
       margin-top: -55px;
-      margin-left: 0px;
+      padding-left: 0px;
     }
     .form-instruction {
       padding-left: 35px;
@@ -164,7 +193,7 @@ button:focus
       display: block;
     }
     .form-main-button {
-        width: 310px;
+        width: 300px;
     }
 }
 

@@ -3,7 +3,5 @@ public/js
 public/index.html
 public/*.css
 .sass-cache
-main.css.map
-main.css
-index.html
+*.css.map
 

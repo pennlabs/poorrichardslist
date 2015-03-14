@@ -22,17 +22,17 @@
         <span id="form-instruction">Add details about your goods</span>
       </div>
       <div class="eight columns">
-        <form action="/items" method="post">
+        <form id ="good-form" action="/items" method="post">
           <div class="row">
             <div class="eight columns">
               <label for="tags">Add tags to your goods</label>
-                  <input name="tags" class="box-width" type="text" placeholder="#bike #easylife" id="tags">
+                  <input name="tags" class="goods-box" type="text" placeholder="#bike #easylife" id="tags">
             </div>
           </div>
           <div class="row">
             <div class="eight columns">
               <label for="name">Post name</label>
-              <input name="name" class="box-width" type="text" placeholder="Mountain bike" id="name">
+              <input name="name" class="goods-box" type="text" placeholder="Mountain bike" id="name">
             </div>
             <div class="four columns">
               <label for="price">Price</label>
@@ -41,8 +41,55 @@
           </div>
           <div class="row">
             <div class="eight columns">
-              <label for="desribe">Describe your goods</label>
-              <textarea name="desc" class="box-width" placeholder="Amazing condition" id="describe"></textarea>
+              <label for="desc">Describe your goods</label>
+              <textarea name="desc" class="goods-box" placeholder="Great tread for the snow and pretty lightweight. Only used for a couple of semesters." id="desc"></textarea>
+            </div>  
+            <div class="four columns">
+              <input type="submit" value="Submit Post">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</script> 
+
+<script id="textbooks-form-template" type="text/x-handlebars-template">
+    <div class="row textbooks-type-form">
+      <div class="four columns form-instruction">
+        <span id="form-instruction">Add details about your textbook</span>
+      </div>
+      <div class="eight columns">
+        <form id= "sublet-form" action="/items" method="post">
+          <div class="row">
+            <div class="seven columns">
+              <label for="tags">Add tags to your textbook</label>
+                  <input name="tags" class="textbooks-box" type="text" placeholder="#3rdEdition #like-new" id="tags">
+            </div>
+            <div class="row five columns">
+              <div class="seven columns">
+                <label for="course">Course</label>
+                <input name="course" class="course-width" type="text" placeholder="BIBB 109" id="course">
+              </div>
+              <div class="five columns">
+                <label for="price">Price</label>
+                <input name="price" class="price-width" type="number" placeholder="65" id="price">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="seven columns">
+              <label for="title">Book Title</label>
+              <input name="name" class="textbooks-box" type="text" placeholder="Neuroscience: Exploring the Brain" id="title">
+            </div>
+            <div class="four columns">
+              <label for="authors">Author(s)</label>
+              <input name="authors" class="authors-width" type="text" placeholder="Mark F. Bear, Barry W. Connors" id="authors">
+            </div>
+          </div>
+          <div class="row">
+            <div class="seven columns">
+              <label for="desc">Describe your textbook</label>
+              <textarea name="desc" class="textbooks-box" placeholder="I bought it last semester and I think I opened it twice." id="desc"></textarea>
             </div>  
             <div class="four columns">
               <input type="submit" value="Submit Post">
@@ -59,33 +106,33 @@
         <span id="form-instruction">Add details about your place</span>
       </div>
       <div class="eight columns">
-        <form action="/items" method="post">
+        <form id= "sublet-form" action="/items" method="post">
           <div class="row">
-            <div class="eight columns">
+            <div class="seven columns">
               <label for="tags">Add tags to your place</label>
-                  <input name="tags" class="box2-width" type="text" placeholder="#Radian #cheap" id="tags">
+                  <input name="tags" class="sublets-box" type="text" placeholder="#Radian #cheap" id="tags">
             </div>
-            <div class="four columns">
+            <div class="five columns">
               <label for="room-type">Room Type</label>
-              <input name="room-type" class="room-type-width" type="text" placeholder="Single" id="room-type">
+              <input name="room-type" class="sublets-small-box" type="text" placeholder="Single" id="room-type">
             </div>
           </div>
           <div class="row">
-            <div class="eight columns">
+            <div class="seven columns">
               <label for="location">Location</label>
-              <input name="location" class="box2-width" type="text" placeholder="4044 Walnut" id="location">
+              <input name="name" class="sublets-box" type="text" placeholder="4044 Walnut" id="location">
             </div>
-            <div class="four columns">
+            <div class="five columns">
               <label for="rent">Monthly Rent</label>
-              <input name="rent" class="rent-width" type="number" placeholder="850" id="rent">
+              <input name="rent" class="sublets-small-box" type="number" placeholder="850" id="rent">
             </div>
           </div>
           <div class="row">
-            <div class="eight columns">
-              <label for="desribe">Describe your place</label>
-              <textarea name="desc" class="box2-width" placeholder="Pretty big, great location and a really nice kitchen." id="describe"></textarea>
+            <div class="seven columns">
+              <label for="desc">Describe your place</label>
+              <textarea name="desc" class="sublets-box" placeholder="Pretty big, great location and a really nice kitchen." id="desc"></textarea>
             </div>  
-            <div class="four columns">
+            <div class="five columns">
               <input type="submit" value="Submit Post">
             </div>
           </div>
@@ -93,4 +140,3 @@
       </div>
     </div>
 </script> 
-
