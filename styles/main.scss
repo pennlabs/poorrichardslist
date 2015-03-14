@@ -43,8 +43,6 @@
 
 .select-form {
     display: inline-table;
-    width: 574px;
-    margin-left: 15px;
 }
 #select-instruction {
     font-family: Avenir;
@@ -80,23 +78,6 @@ button:focus
 {
   border-color: rgb(5,5,5);
   outline: 0;
-}
-
-@media(max-width: 550px) {
-    .form-background {
-      padding-top: 50px;
-    }
-    .form-content {        
-    }
-    #select-instruction {      
-    }
-    .form-main-button {
-        width: 310px;
-        //display: block;
-    }
-    #type-form {
-      margin-top: 0px;
-    }
 }
 
 .form-instruction {
@@ -153,6 +134,26 @@ button:focus
     height: 110px;
     font-size: 14px;
   }
+}
+
+@media(max-width: 549px) {
+    .form-background {
+      padding-top: 15px;
+    }
+    #type-form {
+      margin-top: -55px;
+    }
+    .form-instruction {
+      padding-left: 35px;
+      margin-bottom: 10px;
+    }
+    .form-buttons {
+      margin-left: 20%;
+      display: block;
+    }
+    .form-main-button {
+        width: 310px;
+    }
 }
 
 
