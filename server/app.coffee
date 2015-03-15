@@ -63,5 +63,15 @@ app.delete '/tags/:id', (req, res) ->
     (err, result) ->
       res.json result
 
+# Returns cloudinary credentials for the client to upload images.
+# Credentials timeout in an hour. Example below:
+# { timestamp: 1426435407,
+#   signature: 'b646d8d486b74a27c88653ddcd0c05cf4d4f282a',
+#   api_key:   '162536167369695' }
+app.get '/cloudinary', (req, res) ->
+  params = cloudinary.utils.build_upload_params {}
+  params = cloudinary.utils.process_request_params params, {}
+  res.json params
+
 app.listen 8080, ->
   console.log "server started!!"
