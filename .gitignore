@@ -4,4 +4,4 @@ public/index.html
 public/*.css
 .sass-cache
 *.css.map
-
+.env
