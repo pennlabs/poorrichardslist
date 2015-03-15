@@ -8,6 +8,7 @@
     <h3><a href="#items/{{_id}}">{{name}}</a></h3>
     <label>${{price}}</label>
     <p>{{desc}}</p>
+    <img src="{{smallImageUrl}}"/>
   </div>
   <br>
 </script>
@@ -17,9 +18,12 @@
     <h3><a href="#items/{{_id}}">{{name}}</a></h3>
     <label>${{price}}</label>
     <p>{{desc}}</p>
-    {{#each tags}}
-      {{name}}
-    {{/each}}
+    <p>
+      {{#each tags}}
+        {{name}}
+      {{/each}}
+    </p>
+    <img src="{{largeImageUrl}}"/>
   </div>
   <br>
 </script>

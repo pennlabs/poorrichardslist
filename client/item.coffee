@@ -128,6 +128,7 @@ App.Views.GoodsFormView = Backbone.View.extend
       desc: @$('input[name=desc]').val()
       price: @$('input[name=price]').val()
       tags: @$('input[name=tags]').val()
+      imageId: @$('input[name=image-id]').val()
       type: 'goods'
     @model.save data,
       success: (model, res, options) ->
@@ -159,6 +160,7 @@ App.Views.TextbooksFormView = Backbone.View.extend
       tags: @$('input[name=tags]').val()
       course: @$('input[name=course]').val()
       authors: @$('input[name=authors]').val()
+      imageId: @$('input[name=image-id]').val()
       type: 'textbooks'
     @model.save data,
       success: (model, res, options) ->
@@ -189,6 +191,7 @@ App.Views.SubletsFormView = Backbone.View.extend
       price: @$('input[name=price]').val()
       tags: @$('input[name=tags]').val()
       roomType: @$('input[name=room-type]').val()
+      imageId: @$('input[name=image-id]').val()
       type: 'sublets'
     @model.save data,
       success: (model, res, options) ->

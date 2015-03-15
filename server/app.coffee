@@ -25,17 +25,31 @@ cloudinary.config
 # routes
 app.get '/items', (req, res) ->
   db.collection('items').find({}).sort({_id: -1}).toArray (err, items) ->
-    res.json items
+    async.map items,
+      (item, callback) ->
+        item.smallImageUrl = cloudinary.utils.url item.imageId, {
+          crop: 'fit', width: 400, height: 400 }
+        callback null, item
+      (err, items) ->
+        res.json items
 
 app.get '/items/:id', (req, res) ->
   db.collection('items').findOne {_id: new BSON.ObjectID(req.params.id)},
     (err, item) ->
+      item.largeImageUrl = cloudinary.utils.url item.imageId, {
+        crop: 'fit', width: 800, height: 800 }
       db.collection('tags').find({_id: {$in: item.tags}}).toArray (err, tags) ->
         item.tags = tags
         res.json item
 
 app.post '/items', parseUrlencoded, (req, res) ->
   item = req.body
+  if req.body.imageId
+    preloadedFile = new cloudinary.PreloadedFile req.body.imageId
+    if preloadedFile.is_valid()
+      item.imageId = preloadedFile.identifier()
+    else
+      throw "Invalid image upload signature"
   if req.body.tags
     tags = _.map (req.body.tags.split " "), (name) -> {name: name}
   else
