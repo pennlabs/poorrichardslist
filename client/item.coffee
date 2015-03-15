@@ -94,9 +94,20 @@ App.Views.ItemFormView = Backbone.View.extend
     @$el.html Handlebars.compile($("#item-form-template-main").html())
     if @type
       template = Handlebars.compile $("##{@type}-form-template").html()
-      @$el.find("#type-form").html template(@model.attributes) 
+      @$el.find("#type-form").html template(@model.attributes)
       @$el.find("#type-form").addClass('textbooks-adjust') if @type =='textbooks'
       @$el.find("#select-instruction").addClass('form-hide-text')
+    @$el.find(".cloudinary-fileupload").cloudinary_fileupload()
+    @$el.find('.cloudinary-fileupload').bind 'cloudinarydone', (e,data) ->
+      $('.preview').html(
+        $.cloudinary.image(
+            data.result.public_id,
+            format: data.result.format
+            version: data.result.version
+            crop: 'fill'
+            width: 300
+            height: 200))
+      return true
     this
 
 App.Views.GoodsFormView = Backbone.View.extend

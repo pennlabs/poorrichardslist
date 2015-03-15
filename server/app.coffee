@@ -1,4 +1,4 @@
-async = require 'async'
+require('dotenv').load()
 Item = require './item'
 db = require './db'
 
@@ -6,6 +6,8 @@ BSON = require('mongodb').BSONPure
 express = require 'express'
 morgan = require 'morgan'
 _ = require 'lodash'
+async = require 'async'
+cloudinary = require 'cloudinary'
 app = express()
 
 app.use express.static 'public'
@@ -14,6 +16,11 @@ app.use morgan 'combined'
 bodyParser = require 'body-parser'
 parseUrlencoded = bodyParser.urlencoded {extended: false}
 app.use(bodyParser.json())
+
+cloudinary.config
+  cloud_name: process.env.CLOUD_NAME
+  api_key: process.env.API_KEY
+  api_secret: process.env.API_SECRET
 
 # routes
 app.get '/items', (req, res) ->
@@ -29,7 +36,10 @@ app.get '/items/:id', (req, res) ->
 
 app.post '/items', parseUrlencoded, (req, res) ->
   item = req.body
-  tags = _.map (req.body.tags.split " "), (name) -> {name: name}
+  if req.body.tags
+    tags = _.map (req.body.tags.split " "), (name) -> {name: name}
+  else
+    tags = []
   Item.addItem item, tags, (result) ->
     res.status(201).json result
 

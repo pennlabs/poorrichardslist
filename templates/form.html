@@ -9,7 +9,7 @@
         <span id="select-instruction">Select an item type</span>
         <a id="#select-goods" class="button form-main-button" href="#upload/goods"> Goods</a>
         <a id="#select-textbooks" class="button form-main-button" href="#upload/textbooks"> Textbooks</a>
-        <a id="#select-sublets" class="button form-main-button" href="#upload/sublets"> Sublets</a> 
+        <a id="#select-sublets" class="button form-main-button" href="#upload/sublets"> Sublets</a>
         <div id="type-form"></div>
       </div>
     </div>
@@ -41,9 +41,15 @@
           </div>
           <div class="row">
             <div class="eight columns">
+              <label for="image">Post image</label>
+              <input class='cloudinary-fileupload' data-cloudinary-field='image_id' data-form-data='{"timestamp":1426384575,"signature":"75ffcecf53c4aafd8b6f7cd9d3c8b0323a363c9a","api_key":"162536167369695"}' data-url='https://api.cloudinary.com/v1_1/poor-richard-s-list/auto/upload' name='file' type='file'/>
+              <span class="preview"></span>
+            </div>
+          <div class="row">
+            <div class="eight columns">
               <label for="desc">Describe your goods</label>
               <textarea name="desc" class="goods-box" placeholder="Great tread for the snow and pretty lightweight. Only used for a couple of semesters." id="desc"></textarea>
-            </div>  
+            </div>
             <div class="four columns">
               <input type="submit" value="Submit Post">
             </div>
@@ -51,7 +57,7 @@
         </form>
       </div>
     </div>
-</script> 
+</script>
 
 <script id="textbooks-form-template" type="text/x-handlebars-template">
     <div class="row textbooks-type-form">
@@ -90,7 +96,7 @@
             <div class="seven columns">
               <label for="desc">Describe your textbook</label>
               <textarea name="desc" class="textbooks-box" placeholder="I bought it last semester and I think I opened it twice." id="desc"></textarea>
-            </div>  
+            </div>
             <div class="four columns">
               <input type="submit" value="Submit Post">
             </div>
@@ -98,7 +104,7 @@
         </form>
       </div>
     </div>
-</script> 
+</script>
 
 <script id="sublets-form-template" type="text/x-handlebars-template">
     <div class="row">
@@ -131,7 +137,7 @@
             <div class="seven columns">
               <label for="desc">Describe your place</label>
               <textarea name="desc" class="sublets-box" placeholder="Pretty big, great location and a really nice kitchen." id="desc"></textarea>
-            </div>  
+            </div>
             <div class="five columns">
               <input type="submit" value="Submit Post">
             </div>
@@ -139,4 +145,4 @@
         </form>
       </div>
     </div>
-</script> 
+</script>
