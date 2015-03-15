@@ -1,5 +1,5 @@
 node_modules
-public/js
+public/js/*.js
 public/index.html
 public/*.css
 .sass-cache
