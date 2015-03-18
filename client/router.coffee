@@ -2,7 +2,7 @@ App.Router = Backbone.Router.extend
   routes:
     "": "index"
     "items/:id": "show"
-    "upload(/:type)": "new"
+    "upload": "new"
 
   start: ->
     Backbone.history.start()
@@ -26,9 +26,9 @@ App.Router = Backbone.Router.extend
     itemShowView = new App.Views.ItemShowView(model: item)
     $("#container").html itemShowView.el
 
-  new: (type) ->
-    item = new App.Models.Item(type: type)
-    itemFormView = new App.Views.ItemFormView(model: item, type: type)
+  new: ->
+    item = new App.Models.Item()
+    itemFormView = new App.Views.ItemFormView(model: item)
     $("#container").html itemFormView.render().el
 
 $ ->
