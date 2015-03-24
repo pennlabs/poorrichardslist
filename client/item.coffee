@@ -6,7 +6,7 @@ App.Models.Item = Backbone.Model.extend
 # COLLECTIONS
 App.Collections.Items = Backbone.Collection.extend
   model: App.Models.Item
-  url: "/items"
+  url: "/items" 
 
 #########
 # VIEWS #

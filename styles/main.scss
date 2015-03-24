@@ -10,7 +10,7 @@ $form-label-font: 'Ubuntu', sans-serif;
     font-family: $font-stack;
 }
 
-.top {
+.top { 
     margin-top: 18px;
     padding-top: 55px;
     padding-bottom: 50px;
@@ -204,9 +204,11 @@ button:focus
 }
 
 .tag {
+  cursor: pointer;
   font-size: 20px;
   padding-bottom: 15px;
 }
+
 
 .selected {
   background-color: #C7E7F0;
