@@ -14,16 +14,45 @@
 </script>
 
 <script id="item-show-template" type="text/x-handlebars-template">
-  <div>
-    <h3><a href="#items/{{_id}}">{{name}}</a></h3>
-    <label>${{price}}</label>
-    <p>{{desc}}</p>
-    <p>
-      {{#each tags}}
+  <div id="item-detail">
+    <div class="navbar">
+      <h2>Poor Richard's List</h2>
+      <div class="menu">
+        <a>Sign out</a>
+        <a>noonanja</a>
+      </div>
+    </div>
+    <div class="body container">
+      <img class="item-image" src="{{detailImageUrl}}"/>
+      <h3>
         {{name}}
-      {{/each}}
-    </p>
-    <img src="{{largeImageUrl}}"/>
+      </h3>
+      <div class="row">
+        <div id="price" class="ten columns">
+          <label>${{price}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="three columns field-name">
+          Tags
+        </div>
+        <div id="tags" class="seven columns">
+          <hr>
+          {{#each tags}}
+            {{name}}
+          {{/each}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="three columns field-name">
+          Description
+        </div>
+        <div id="description" class="seven columns">
+          <hr>
+          <p>{{desc}}</p>
+          <hr>
+        </div>
+      </div>
+    </div>
   </div>
-  <br>
 </script>
