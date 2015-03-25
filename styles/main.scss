@@ -10,6 +10,11 @@ $form-label-font: 'Ubuntu', sans-serif;
     font-family: $font-stack;
 }
 
+.container {
+  margin-left: 0px;
+  margin-right: auto;
+}
+
 .top { 
     margin-top: 18px;
     padding-top: 55px;
@@ -34,6 +39,40 @@ $form-label-font: 'Ubuntu', sans-serif;
     text-decoration: none;
 }
 
+// LISTINGS
+#listing {
+  .sidebar {
+    top: 0;
+    position: fixed;
+    background-color: rgb(245,245,245);
+    text-align: center;
+    padding-top: 55px;
+    width: 300px;
+    height: 100%;
+  }
+  .tag-scroll {
+    height: 65%;
+    overflow: scroll;
+    margin-left: 28%;
+    border-left-color: black;
+    border-left-style: solid;
+  }
+  .tag-list {
+    display: -webkit-inline-box;
+    text-align: left;
+    margin-left: 8px;
+  }
+  #tag {
+    color: black;
+  }
+  .tag {
+    cursor: pointer;
+    font-size: 20px;
+    padding-bottom: 15px;
+    text-decoration: none;
+    font-size: 18px;
+  }
+}  
 
 // FORMS
 $background-color: rgb(245,245,245);
@@ -195,6 +234,9 @@ button:focus
     .form-main-button {
         width: 300px;
     }
+    .sidebar {
+      max-width: none;
+    }
 }
 
 
@@ -202,13 +244,6 @@ button:focus
 #search-bar {
   padding-bottom: 15px;
 }
-
-.tag {
-  cursor: pointer;
-  font-size: 20px;
-  padding-bottom: 15px;
-}
-
 
 .selected {
   background-color: #C7E7F0;
