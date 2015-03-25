@@ -14,12 +14,6 @@ $off-black: rgb(86, 90, 92);
     font-family: $font-stack;
 }
 
-$sidebar-width: 280px;
-.listing-container {
-  margin-left: $sidebar-width;
-  margin-right: auto;
-}
-
 .top { 
     margin-top: 18px;
     padding-top: 55px;
@@ -45,6 +39,12 @@ $sidebar-width: 280px;
 }
 
 // LISTINGS
+$sidebar-width: 280px;
+.listing-container {
+  margin-left: $sidebar-width;
+  margin-right: auto;
+}
+
 #listing {
   .sidebar {
     top: 0;
