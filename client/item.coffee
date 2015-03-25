@@ -125,7 +125,7 @@ App.Views.GoodsFormView = Backbone.View.extend
     e.preventDefault()
     data =
       name: @$('input[name=name]').val()
-      desc: @$('input[name=desc]').val()
+      desc: @$('textarea[name=desc]').val()
       price: @$('input[name=price]').val()
       tags: @$('input[name=tags]').val()
       imageId: @$('input[name=image-id]').val()

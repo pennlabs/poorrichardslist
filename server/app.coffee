@@ -36,8 +36,8 @@ app.get '/items', (req, res) ->
 app.get '/items/:id', (req, res) ->
   db.collection('items').findOne {_id: new BSON.ObjectID(req.params.id)},
     (err, item) ->
-      item.largeImageUrl = cloudinary.utils.url item.imageId, {
-        crop: 'fit', width: 800, height: 800 }
+      item.detailImageUrl = cloudinary.utils.url item.imageId, {
+        crop: 'fit', height: 330 }
       db.collection('tags').find({_id: {$in: item.tags}}).toArray (err, tags) ->
         item.tags = tags
         res.json item
