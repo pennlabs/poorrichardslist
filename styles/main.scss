@@ -95,6 +95,10 @@ $sidebar-width: 280px;
   }
 }  
 
+.selected {
+  background-color: #C7E7F0;
+}
+
 // FORMS
 .form-background {
     background-color: $background-color;
@@ -263,8 +267,4 @@ button:focus
 // APP
 #search-bar {
   padding-bottom: 15px;
-}
-
-.selected {
-  background-color: #C7E7F0;
 }
