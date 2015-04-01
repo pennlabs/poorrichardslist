@@ -4,13 +4,16 @@
 </script>
 
 <script id="item-template" type="text/x-handlebars-template">
-  <div>
-    <h3><a href="#items/{{_id}}">{{name}}</a></h3>
-    <label>${{price}}</label>
-    <p>{{desc}}</p>
-    <img src="{{smallImageUrl}}"/>
-  </div>
-  <br>
+    <figure class="effect-goliath">
+      <img src="images/12.jpg"/>
+      <!-- <img src="{{smallImageUrl}}"/> -->
+      <figcaption>
+        <div>
+        <h2><a href="#items/{{_id}}"><strong>${{price}}</strong> <br> <span>{{name}}</span></a></h2>
+        </div>
+        <p>{{desc}}</p>
+      </figcaption>     
+    </figure>
 </script>
 
 <script id="item-show-template" type="text/x-handlebars-template">
