@@ -110,9 +110,10 @@ $sidebar-width: 280px;
     width: 100%;
     left: 0px;
     padding-top: 100px;
-    padding-bottom: 80px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+}
+
+#goods-form, #sublets-form {
+  padding-bottom: 83px;
 }
 
 .center-adjust {
