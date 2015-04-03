@@ -10,5 +10,5 @@ To Get Started:
 6. Install grunt globally `sudo npm install -g grunt-cli`.
 7. After confirming Ruby installation `ruby -v`, install Sass `gem install sass`.
 8. Run grunt to continuously compile html and coffeescript files `grunt watch`.
-9. Install supervisor globally `npm install supervisor`
+9. Install supervisor globally `npm install supervisor -g`
 10. Run server via supervisor `supervisor server/app.coffee`.
