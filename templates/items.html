@@ -5,13 +5,13 @@
 
 <script id="item-template" type="text/x-handlebars-template">
     <figure class="photo-effect">
-      <img src="images/12.jpg"/> 
+      <img src="images/12.jpg"/>
       <!-- <img src="{{smallImageUrl}}"/> -->
       <figcaption>
         <h2><a href="#items/{{_id}}">{{name}}</a></h2>
         <!-- <p>${{price}}   {{#each tags}}{{name}}{{/each}}</p> -->
         <p>${{price}}<br>#bikes #easylife #schwinn</p>
-      </figcaption>     
+      </figcaption>
     </figure>
 </script>
 
@@ -25,7 +25,9 @@
       </div>
     </div>
     <div class="body container">
-      <img class="item-image" src="{{detailImageUrl}}"/>
+      {{#each detailImageUrls}}
+        <img class="item-image" src="{{this}}"/>
+      {{/each}}
       <h3>
         {{name}}
       </h3>

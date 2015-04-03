@@ -9,7 +9,7 @@ App.Views.ImageUploaderView = Backbone.View.extend
     @listenTo @model, 'change', @render
 
   preview: (e, data) ->
-    @$el.find(".preview").html $.cloudinary.image(
+    @$el.find(".preview").append $.cloudinary.image(
       data.result.public_id,
       format: data.result.format
       version: data.result.version

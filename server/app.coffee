@@ -36,18 +36,20 @@ app.get '/items', (req, res) ->
 app.get '/items/:id', (req, res) ->
   db.collection('items').findOne {_id: new BSON.ObjectID(req.params.id)},
     (err, item) ->
-      item.detailImageUrl = cloudinary.utils.url item.imageId, {
-        crop: 'fit', height: 330 }
+      item.detailImageUrls = _.map item.imageIds, (id) ->
+        cloudinary.utils.url id, { crop: 'fit', height: 330 }
       db.collection('tags').find({_id: {$in: item.tags}}).toArray (err, tags) ->
         item.tags = tags
         res.json item
 
 app.post '/items', parseUrlencoded, (req, res) ->
   item = req.body
-  if req.body.imageId
-    preloadedFile = new cloudinary.PreloadedFile req.body.imageId
-    if preloadedFile.is_valid()
-      item.imageId = preloadedFile.identifier()
+  imageIds = req.body.imageIds
+  if imageIds and imageIds.length > 0
+    preloadedFiles = _.map imageIds, (id) ->
+      new cloudinary.PreloadedFile id
+    if _.all(preloadedFiles, (pf) -> pf.is_valid())
+      item.imageIds = _.map preloadedFiles, (pf) -> pf.identifier()
     else
       throw "Invalid image upload signature"
   if req.body.tags
