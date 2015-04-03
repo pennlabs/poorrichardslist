@@ -43,6 +43,9 @@ $sidebar-width: 280px;
 .listing-container {
   margin-left: $sidebar-width;
   margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 60px;
 }
 
 #listing {
@@ -94,6 +97,10 @@ $sidebar-width: 280px;
     text-overflow: ellipsis;
   }
 }  
+
+.selected {
+  background-color: #C7E7F0;
+}
 
 // FORMS
 .form-background {
@@ -241,30 +248,202 @@ button:focus
     }
     #type-form {
       margin-top: -55px;
-      padding-left: 0px;
     }
     .form-instruction {
       padding-left: 35px;
       margin-bottom: 10px;
     }
     .form-content {
-      margin-left: 20%;
       display: block;
     }
     .form-main-button {
-        width: 300px;
+      width: 300px;
     }
     .sidebar {
       max-width: none;
     }
+    .center-adjust {
+      margin-right: 0px;
+    }
 }
 
+////// LISTINGS PAGE
 
-// APP
+.search {
+  text-align: center;
+  display: -webkit-inline-box;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #565a5c;
+  margin-bottom: 45px;
+}
+
 #search-bar {
-  padding-bottom: 15px;
+  padding-left: 2px;
 }
 
-.selected {
-  background-color: #C7E7F0;
+#search-input {
+    width: 530px;
+    height: 60px;
+    font-size: 30px;
+    border: none;
+    color: #565a5c;
+}
+
+figure.photo-effect a {
+  outline: none;
+  color: rgb(245,245,245);
+  text-decoration: none;
+  font-size: 30px;
+}
+
+a:hover, a:focus {
+  color: #528cb3;
+}
+
+.photo-content {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.photo-content > h2 {
+  clear: both;
+  margin: 0;
+  padding: 4em 1% 0;
+}
+
+.photo-content > h2:first-child {
+  padding-top: 0em;
+}
+
+.grid {
+  position: relative;
+  margin: 0 auto;
+  padding: 1em 0 4em;
+  max-width: 1000px;
+  list-style: none;
+  text-align: center;
+}
+
+.grid figure {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 320px;
+  max-width: 480px;
+  max-height: 360px;
+  width: 48%;
+  background: #3085a3;
+  text-align: center;
+  cursor: pointer;
+}
+
+.grid figure img {
+  position: relative;
+  display: block;
+  min-height: 100%;
+  max-width: 100%;
+  opacity: 0.8;
+}
+
+.grid figure figcaption {
+  padding: 2em;
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.grid figure figcaption::before,
+.grid figure figcaption::after {
+  pointer-events: none;
+}
+
+.grid figure figcaption,
+.grid figure figcaption > a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 89%;
+  height: 100%;
+}
+
+.grid figure figcaption > a {
+  z-index: 1000;
+  text-indent: 200%;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.grid figure h2,
+.grid figure p {
+  margin: 0;
+}
+
+.grid figure p {
+  letter-spacing: 1px;
+  font-size: 19px;
+}
+
+figure.photo-effect img {
+  max-width: none;
+  width: -webkit-calc(100% + 50px);
+  width: calc(100% + 50px);
+  opacity: 0.7;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(-40px,0, 0);
+  transform: translate3d(-40px,0,0);
+}
+
+figure.photo-effect figcaption {
+  text-align: left;
+}
+
+figure.photo-effect figcaption > div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 2em;
+  width: 100%;
+  height: 50%;
+}
+
+figure.photo-effect h2,
+figure.photo-effect p {
+  -webkit-transform: translate3d(0,40px,0);
+  transform: translate3d(0,40px,0);
+}
+
+figure.photo-effect h2 {
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+}
+
+figure.photo-effect p {
+  padding-top: 10px;
+  color: rgba(255,255,255,0.8);
+  opacity: 0;
+  -webkit-transition: opacity 0.2s, -webkit-transform 0.35s;
+  transition: opacity 0.2s, transform 0.35s;
+}
+
+figure.photo-effect:hover img,
+figure.photo-effect:hover p {
+  opacity: 1;
+}
+
+figure.photo-effect:hover img,
+figure.photo-effect:hover h2,
+figure.photo-effect:hover p {
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+figure.photo-effect:hover p {
+  -webkit-transition-delay: 0.05s;
+  transition-delay: 0.05s;
+  -webkit-transition-duration: 0.35s;
+  transition-duration: 0.35s;
 }
