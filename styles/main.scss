@@ -105,7 +105,7 @@ $sidebar-width: 280px;
 // FORMS
 .form-background {
     background-color: $background-color;
-    position: fixed;
+    position: absolute;
     text-align: center;
     width: 100%;
     left: 0px;
@@ -166,7 +166,7 @@ button:focus
 }
 
 .textbooks-adjust {
-    padding-right: 155px;
+    padding-right: 53px;
 }
 
 #type-form {
@@ -186,24 +186,17 @@ button:focus
   .goods-box {
     width: 310px;
   }
-  $tb-sub-box-width: 300px;
-  .sublets-box {
-    width: $tb-sub-box-width;
-  }
-  .textbooks-box {
-    width: $tb-sub-box-width;
+  .textbooks-box,  .sublets-box {
+    width: 300px;
   }
   .price-width {
     width: 65px;
   }
-  .sublets-small-box {
+  .course-width, .price-tb-width {
     width: 90px;
   }
-  .course-width {
-    width: 110px;
-  }
-  .authors-width {
-    width: 200px;
+  .sublets-small-box {
+    width: 90px;
   }
   label {
     font-family: $form-label-font;
