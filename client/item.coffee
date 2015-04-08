@@ -82,6 +82,9 @@ App.Views.ItemShowView = Backbone.View.extend
   render: ->
     template = Handlebars.compile $("#item-show-template").html()
     @$el.html template(@model.attributes)
+    @$el.find(".image-carousel").slick(
+      dots: true
+    )
     this
 
 App.Views.ItemFormView = Backbone.View.extend

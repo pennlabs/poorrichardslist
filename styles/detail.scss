@@ -1,3 +1,6 @@
+$primary-color: #565A5C;
+$background-color: #F5F5F5;
+
 @mixin large-font {
   font-weight: bold;
   font-size: 18pt;
@@ -9,10 +12,10 @@
 }
 
 #item-detail {
-  background-color: #F5F5F5;
+  background-color: $background-color;
 .navbar {
   background-color: white;
-  color: #565A5C;
+  color: $primary-color;
   padding-top: 12px;
   height: 55px;
 
@@ -27,7 +30,7 @@
     float: right;
     margin-right: 100px;
     a {
-      color: #565A5C;
+      color: $primary-color;
       margin-left: 40px;
       @include medium-font;
     }
@@ -36,7 +39,7 @@
 
 .body {
   padding-top: 50px;
-  color: #565A5C;
+  color: $primary-color;
 
   h3 {
     text-align: center;
@@ -48,6 +51,28 @@
     margin-top: 0px;
     margin-bottom: 15px;
     border-color: #C7C2C2;
+  }
+
+  .image-carousel {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    .slick-next {
+      right: -35px;
+    }
+    .slick-prev {
+      left: -35px;
+    }
+    .slick-next,
+    .slick-prev {
+      width: 30px;
+      height: 30px;
+    }
+    .slick-next:before,
+    .slick-prev:before {
+      color: $primary-color;
+      font-size: 30px;
+    }
   }
 
   .item-image {
