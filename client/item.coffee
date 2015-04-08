@@ -6,7 +6,7 @@ App.Models.Item = Backbone.Model.extend
 # COLLECTIONS
 App.Collections.Items = Backbone.Collection.extend
   model: App.Models.Item
-  url: "/items" 
+  url: "/items"
 
 #########
 # VIEWS #
@@ -128,7 +128,7 @@ App.Views.GoodsFormView = Backbone.View.extend
       desc: @$('textarea[name=desc]').val()
       price: @$('input[name=price]').val()
       tags: @$('input[name=tags]').val()
-      imageId: @$('input[name=image-id]').val()
+      imageIds: @$('input[name=image-id]').map(() -> $(this).val()).toArray()
       type: 'goods'
     @model.save data,
       success: (model, res, options) ->
@@ -160,7 +160,7 @@ App.Views.TextbooksFormView = Backbone.View.extend
       tags: @$('input[name=tags]').val()
       course: @$('input[name=course]').val()
       authors: @$('input[name=authors]').val()
-      imageId: @$('input[name=image-id]').val()
+      imageIds: @$('input[name=image-id]').map(() -> $(this).val()).toArray()
       type: 'textbooks'
     @model.save data,
       success: (model, res, options) ->
@@ -191,7 +191,7 @@ App.Views.SubletsFormView = Backbone.View.extend
       price: @$('input[name=price]').val()
       tags: @$('input[name=tags]').val()
       roomType: @$('input[name=room-type]').val()
-      imageId: @$('input[name=image-id]').val()
+      imageIds: @$('input[name=image-id]').map(() -> $(this).val()).toArray()
       type: 'sublets'
     @model.save data,
       success: (model, res, options) ->
