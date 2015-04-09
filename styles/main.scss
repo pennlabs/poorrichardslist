@@ -42,6 +42,7 @@ $off-black: rgb(86, 90, 92);
 $sidebar-width: 280px;
 .listing-container {
   margin-left: $sidebar-width;
+  overflow-x: hidden;
   margin-right: auto;
   padding-left: 15px;
   padding-right: 15px;
@@ -81,12 +82,14 @@ $sidebar-width: 280px;
     text-align: left;
     display: inline-block;
     margin-left: 8px;
-    padding-left: 8px;
     border-left-color: black;
     border-left-style: solid;
   }
   .tag {
     font-size: 18px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    padding-left: 4px;
     cursor: pointer;
     color: $off-black;
     padding-bottom: 15px;
@@ -96,11 +99,23 @@ $sidebar-width: 280px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-}  
 
-.selected {
-  background-color: #C7E7F0;
+  .tag:hover {
+    background-color: #C7E7F0;
+  }
+
+  .selected {
+    background-color: #C7E7F0;
 }
+
+  .dashboard-button {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    left:0;
+    bottom: 0;
+  }
+}  
 
 // FORMS
 .form-background {
@@ -366,7 +381,6 @@ a:hover, a:focus {
 }
 
 .grid figure figcaption > a {
-  z-index: 1000;
   text-indent: 200%;
   white-space: nowrap;
   opacity: 0;
