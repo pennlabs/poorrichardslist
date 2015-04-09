@@ -270,6 +270,8 @@ button:focus
   border-bottom-width: 2px;
   border-bottom-color: #565a5c;
   margin-bottom: 45px;
+  width: 100%;
+  max-width: 530px;
 }
 
 #search-bar {
@@ -324,7 +326,7 @@ a:hover, a:focus {
   float: left;
   overflow: hidden;
   margin: 10px 1%;
-  min-width: 320px;
+  min-width: 210px;
   max-width: 480px;
   max-height: 360px;
   width: 48%;
@@ -441,3 +443,20 @@ figure.photo-effect:hover p {
   -webkit-transition-duration: 0.35s;
   transition-duration: 0.35s;
 }
+
+
+@media (max-width: 747px) {
+  .sidebar {
+    display: none;
+  }
+  .listing-container {
+    margin-left: 0px;
+  }
+  .grid figure {
+    display: inline-block;
+    float: none;
+    margin: 10px auto;
+    width: 100%;
+  }
+}
+
