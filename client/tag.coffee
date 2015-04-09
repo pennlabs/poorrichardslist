@@ -28,12 +28,19 @@ App.Views.TagView = Backbone.View.extend
     $(e.currentTarget).toggleClass "selected"
 
 App.Views.TagListView = Backbone.View.extend
+  className: "tag-list-height" # left off here
+
   events:
     "click .tag": "tagFilter"
 
   initialize: ->
     @listenTo @collection, 'add', @addTag
     @selectedTags = []
+    $(window).on 'resize', @updateHeight
+  
+  updateHeight: -> 
+    console.log @$el 
+    @$el.css 'height', $(window).height() 
 
   render: ->
     template = Handlebars.compile $("#tag-list-template").html()
