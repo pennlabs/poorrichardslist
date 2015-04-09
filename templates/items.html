@@ -5,8 +5,7 @@
 
 <script id="item-template" type="text/x-handlebars-template">
     <figure class="photo-effect">
-      <img src="images/12.jpg"/>
-      <!-- <img src="{{smallImageUrl}}"/> -->
+      <img src="{{smallImageUrl}}"/>
       <figcaption>
         <h2><a href="#items/{{_id}}">{{name}}</a></h2>
         <!-- <p>${{price}}   {{#each tags}}{{name}}{{/each}}</p> -->
@@ -18,16 +17,20 @@
 <script id="item-show-template" type="text/x-handlebars-template">
   <div id="item-detail">
     <div class="navbar">
-      <h2>Poor Richard's List</h2>
+      <h2><a href="/">Poor Richard's List</a></h2>
       <div class="menu">
         <a>Sign out</a>
         <a>noonanja</a>
       </div>
     </div>
     <div class="body container">
-      {{#each detailImageUrls}}
-        <img class="item-image" src="{{this}}"/>
-      {{/each}}
+      <div class="image-carousel">
+        {{#each detailImageUrls}}
+          <div>
+            <img class="item-image" src="{{this}}"/>
+          </div>
+        {{/each}}
+      </div>
       <h3>
         {{name}}
       </h3>
