@@ -60,7 +60,7 @@ App.Views.TagListView = Backbone.View.extend
   itemsWithAllSelectedTags: ->
     items = @selectedTags[0].attributes.items
     for t in @selectedTags.slice(1)
-      items = _.intersection items, t.attributes.items
+      items = _.union items, t.attributes.items
     items
 
   tagFilter: (e) ->

@@ -14,7 +14,7 @@ $off-black: rgb(86, 90, 92);
     font-family: $font-stack;
 }
 
-.top { 
+.top {
     margin-top: 18px;
     padding-top: 55px;
     padding-bottom: 50px;
@@ -100,13 +100,15 @@ $sidebar-width: 280px;
     text-overflow: ellipsis;
   }
 
+}
+
   .tag:hover {
     background-color: #C7E7F0;
   }
 
   .selected {
     background-color: #C7E7F0;
-}
+  }
 
   .dashboard-button {
     width: 100%;
@@ -115,7 +117,6 @@ $sidebar-width: 280px;
     left:0;
     bottom: 0;
   }
-}  
 
 // FORMS
 .form-background {
@@ -208,10 +209,7 @@ button:focus
   .price-width {
     width: 65px;
   }
-  .course-width, .price-tb-width {
-    width: 90px;
-  }
-  .sublets-small-box {
+  .textbooks-small-box, .sublets-small-box {
     width: 90px;
   }
   label {

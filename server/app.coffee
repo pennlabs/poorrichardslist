@@ -27,9 +27,12 @@ app.get '/items', (req, res) ->
   db.collection('items').find({}).sort({_id: -1}).toArray (err, items) ->
     async.map items,
       (item, callback) ->
-        item.smallImageUrl = cloudinary.utils.url item.imageId, {
-          crop: 'fit', width: 400, height: 400 }
-        callback null, item
+        if "imageIds" of item
+          item.smallImageUrl = cloudinary.utils.url item.imageIds[0], {
+            crop: 'fit', width: 400, height: 400 }
+        db.collection('tags').find({_id: {$in: item.tags}}).toArray (err, tags) ->
+          item.tags = tags
+          callback null, item
       (err, items) ->
         res.json items
 

@@ -1,8 +1,20 @@
 App.Indices.ItemIndex = lunr(->
+  @ref '_id'
+
+  # common
   @field 'name'
   @field 'desc'
   @field 'price'
-  @ref '_id'
+
+  # textbooks
+  @field 'authors'
+  @field 'edition'
+  @field 'course'
+
+  # sublets
+  @field 'location'
+  @field 'rent'
+  @field 'roomType'
 )
 
 App.Views.SearchBarView = Backbone.View.extend
