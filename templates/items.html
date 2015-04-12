@@ -7,9 +7,11 @@
     <figure class="photo-effect">
       <img src="{{smallImageUrl}}"/>
       <figcaption>
-        <h2><a href="#items/{{_id}}">{{name}}</a></h2>
-        <!-- <p>${{price}}   {{#each tags}}{{name}}{{/each}}</p> -->
-        <p>${{price}}<br>#bikes #easylife #schwinn</p>
+        <h2><a href="#items/{{_id}}">{{normalizedTitle}}</a></h2>
+        <p>
+          ${{normalizedPrice}}<br>
+          {{#each tags}}{{name}}{{/each}}
+        </p>
       </figcaption>
     </figure>
 </script>

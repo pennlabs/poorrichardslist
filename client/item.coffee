@@ -2,6 +2,14 @@
 App.Models.Item = Backbone.Model.extend
   urlRoot: "/items"
   idAttribute: "_id"
+  parse: (response) ->
+    if response.type == "sublets"
+      response.normalizedTitle = response.location
+      response.normalizedPrice = "#{response.rent} / month"
+    else
+      response.normalizedTitle = response.name
+      response.normalizedPrice = response.price
+    response
 
 # COLLECTIONS
 App.Collections.Items = Backbone.Collection.extend
@@ -82,8 +90,9 @@ App.Views.ItemShowView = Backbone.View.extend
   render: ->
     template = Handlebars.compile $("#item-show-template").html()
     @$el.html template(@model.attributes)
-    template = Handlebars.compile $("##{@model.get("type")}-show-template").html()
-    @$el.find(".tags-row").after template(@model.attributes)
+    subTemplateName = "##{@model.get("type")}-show-template"
+    subTemplate = Handlebars.compile $(subTemplateName).html()
+    @$el.find(".tags-row").after subTemplate(@model.attributes)
     @$el.find(".image-carousel").slick(
       dots: true
     )
