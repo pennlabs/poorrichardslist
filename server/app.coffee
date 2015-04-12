@@ -30,7 +30,9 @@ app.get '/items', (req, res) ->
         if "imageIds" of item
           item.smallImageUrl = cloudinary.utils.url item.imageIds[0], {
             crop: 'fit', width: 400, height: 400 }
-        callback null, item
+        db.collection('tags').find({_id: {$in: item.tags}}).toArray (err, tags) ->
+          item.tags = tags
+          callback null, item
       (err, items) ->
         res.json items
 

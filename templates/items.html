@@ -7,9 +7,11 @@
     <figure class="photo-effect">
       <img src="{{smallImageUrl}}"/>
       <figcaption>
-        <h2><a href="#items/{{_id}}">{{name}}</a></h2>
-        <!-- <p>${{price}}   {{#each tags}}{{name}}{{/each}}</p> -->
-        <p>${{price}}<br>#bikes #easylife #schwinn</p>
+        <h2><a href="#items/{{_id}}">{{normalizedTitle}}</a></h2>
+        <p>
+          ${{normalizedPrice}}<br>
+          {{#each tags}}{{name}}{{/each}}
+        </p>
       </figcaption>
     </figure>
 </script>
@@ -32,14 +34,24 @@
         {{/each}}
       </div>
       <h3>
-        {{name}}
+        {{#if name}}
+          {{name}}
+        {{/if}}
+        {{#if location}}
+          {{location}}
+        {{/if}}
       </h3>
       <div class="row">
         <div id="price" class="ten columns">
-          <label>${{price}}</label>
+          {{#if price}}
+            <label>${{price}}</label>
+          {{/if}}
+          {{#if rent}}
+            <label>${{rent}} / month</label>
+          {{/if}}
         </div>
       </div>
-      <div class="row">
+      <div class="row tags-row">
         <div class="three columns field-name">
           Tags
         </div>
@@ -60,6 +72,51 @@
           <hr>
         </div>
       </div>
+    </div>
+  </div>
+</script>
+
+<script id="goods-show-template" type="text/x-handlebars-template">
+</script>
+
+<script id="textbooks-show-template" type="text/x-handlebars-template">
+  <div class="row">
+    <div class="three columns field-name">
+      Author(s)
+    </div>
+    <div id="authors" class="seven columns">
+      <hr>
+      <p>{{authors}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three columns field-name">
+      Edition
+    </div>
+    <div id="edition" class="seven columns">
+      <hr>
+      <p>{{edition}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three columns field-name">
+      course
+    </div>
+    <div id="course" class="seven columns">
+      <hr>
+      <p>{{course}}</p>
+    </div>
+  </div>
+</script>
+
+<script id="sublets-show-template" type="text/x-handlebars-template">
+  <div class="row">
+    <div class="three columns field-name">
+      Room Type
+    </div>
+    <div id="room-type" class="seven columns">
+      <hr>
+      <p>{{roomType}}</p>
     </div>
   </div>
 </script>

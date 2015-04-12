@@ -14,7 +14,7 @@ $off-black: rgb(86, 90, 92);
     font-family: $font-stack;
 }
 
-.top { 
+.top {
     margin-top: 18px;
     padding-top: 55px;
     padding-bottom: 50px;
@@ -96,7 +96,7 @@ $sidebar-width: 280px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-}  
+}
 
 .selected {
   background-color: #C7E7F0;
@@ -193,10 +193,7 @@ button:focus
   .price-width {
     width: 65px;
   }
-  .course-width, .price-tb-width {
-    width: 90px;
-  }
-  .sublets-small-box {
+  .textbooks-small-box, .sublets-small-box {
     width: 90px;
   }
   label {

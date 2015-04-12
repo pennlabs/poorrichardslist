@@ -18,7 +18,7 @@
 
 <script id="goods-form-template" type="text/x-handlebars-template">
     <div class="row">
-      <div class="four columns form-instruction"> 
+      <div class="four columns form-instruction">
         <span id="form-instruction">Add details about your goods</span>
       </div>
       <div class="eight columns">
@@ -71,6 +71,10 @@
               <label for="tags">Add tags to your textbook</label>
                   <input name="tags" class="textbooks-box" type="text" placeholder="#3rdEdition #like-new" id="tags">
             </div>
+            <div class="four columns">
+              <label for="edition">Edition</label>
+              <input name="edition" class="textbooks-small-box" type="text" placeholder="3" id="edition">
+            </div>
           </div>
           <div class="row">
             <div class="seven columns">
@@ -79,7 +83,7 @@
             </div>
             <div class="four columns">
                 <label for="price">Price</label>
-                <input name="price" class="price-tb-width" type="number" placeholder="65" id="price">
+                <input name="price" class="textbooks-small-box" type="number" placeholder="65" id="price">
             </div>
           </div>
           <div class="row">
@@ -89,7 +93,7 @@
             </div>
             <div class="four columns">
                 <label for="course">Course</label>
-                <input name="course" class="course-width" type="text" placeholder="BIBB 109" id="course">
+                <input name="course" class="textbooks-small-box" type="text" placeholder="BIBB 109" id="course">
             </div>
           </div>
           <div class="row">
@@ -132,11 +136,11 @@
           <div class="row">
             <div class="seven columns">
               <label for="location">Location</label>
-              <input name="name" class="sublets-box" type="text" placeholder="4044 Walnut" id="location">
+              <input name="location" class="sublets-box" type="text" placeholder="4044 Walnut" id="location">
             </div>
             <div class="five columns">
               <label for="rent">Monthly Rent</label>
-              <input name="price" class="sublets-small-box" type="number" placeholder="850" id="rent">
+              <input name="rent" class="sublets-small-box" type="number" placeholder="850" id="rent">
             </div>
           </div>
           <div class="row">
