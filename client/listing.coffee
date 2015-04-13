@@ -11,5 +11,5 @@ App.Views.ListingView = Backbone.View.extend
     @$el.html template()
     @$el.find("#listing-container").prepend @searchBarView.render().el
     @$el.find("#listing-container").append @itemListView.render().el
-    @$el.find("#tag-list").html @tagListView.render().el
+    @$el.find("#tag-list-container").html @tagListView.render().el
     this
