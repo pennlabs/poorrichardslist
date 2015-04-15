@@ -2,7 +2,6 @@ require('dotenv').load()
 Item = require './item'
 db = require './db'
 
-BSON = require('mongodb').BSONPure
 express = require 'express'
 morgan = require 'morgan'
 _ = require 'lodash'
@@ -24,24 +23,24 @@ cloudinary.config
 
 # routes
 app.get '/items', (req, res) ->
-  db.collection('items').find({}).sort({_id: -1}).toArray (err, items) ->
+  db.items.find({}).sort({_id: -1}).toArray (err, items) ->
     async.map items,
       (item, callback) ->
         if "imageIds" of item
           item.smallImageUrl = cloudinary.utils.url item.imageIds[0], {
             crop: 'fit', width: 400, height: 400 }
-        db.collection('tags').find({_id: {$in: item.tags}}).toArray (err, tags) ->
+        db.tags.findByItem item, (err, tags) ->
           item.tags = tags
           callback null, item
       (err, items) ->
         res.json items
 
 app.get '/items/:id', (req, res) ->
-  db.collection('items').findOne {_id: new BSON.ObjectID(req.params.id)},
+  db.items.findById req.params.id,
     (err, item) ->
       item.detailImageUrls = _.map item.imageIds, (id) ->
         cloudinary.utils.url id, { crop: 'fit', height: 330 }
-      db.collection('tags').find({_id: {$in: item.tags}}).toArray (err, tags) ->
+      db.tags.findByItem item, (err, tags) ->
         item.tags = tags
         res.json item
 
@@ -63,22 +62,22 @@ app.post '/items', parseUrlencoded, (req, res) ->
     res.status(201).json result
 
 app.get '/tags', (req, res) ->
-  db.collection('tags').find({}).sort({count: -1}).toArray (err, tags) ->
+  db.tags.find({}).sort({count: -1}).toArray (err, tags) ->
     async.map tags,
       (tag, callback) ->
-        db.collection('items').find({tags: tag._id}).toArray (err, items) ->
+        db.items.find({tags: tag._id}).toArray (err, items) ->
           tag.items = _.map items, (item) -> item._id
           callback null, tag
       (err, tags) ->
         res.json tags
 
 app.get '/tags/:id', (req, res) ->
-  db.collection('tags').findOne {_id: new BSON.ObjectID(req.params.id)},
+  db.tags.findById req.params.id,
     (err, tag) ->
       res.json tag
 
 app.delete '/tags/:id', (req, res) ->
-  db.collection('tags').remove {_id: new BSON.ObjectID(req.params.id)},
+  db.tags.removeById req.params.id,
     (err, result) ->
       res.json result
 
