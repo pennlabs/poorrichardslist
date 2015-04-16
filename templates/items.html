@@ -10,7 +10,9 @@
         <h2><a href="#items/{{_id}}">{{normalizedTitle}}</a></h2>
         <p>
           ${{normalizedPrice}}<br>
-          {{#each tags}}{{name}}{{/each}}
+          {{#each tags}}
+            {{name}}
+          {{/each}}
         </p>
       </figcaption>
     </figure>
