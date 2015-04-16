@@ -31,7 +31,7 @@ App.Views.TagListView = Backbone.View.extend
   id: "tag-list-render-tags"
 
   events:
-    "click a": "tagFilter"
+    "click .tag": "tagFilter"
 
   initialize: ->
     @listenTo @collection, 'add', @addTag
@@ -65,7 +65,7 @@ App.Views.TagListView = Backbone.View.extend
 
   tagFilter: (e) ->
     e.preventDefault()
-    tag = @collection.get $(e.currentTarget).data("id")
+    tag = @collection.get $(e.currentTarget).children('a').data("id")
     @updateSelectedTags tag
 
     if @selectedTags.length > 0
