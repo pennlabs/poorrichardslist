@@ -9,7 +9,7 @@ App.Views.ListingView = Backbone.View.extend
   render: ->
     template = Handlebars.compile $("#listing-template").html()
     @$el.html template()
-    @$el.find("#listing-container").prepend @searchBarView.render().el
-    @$el.find("#listing-container").append @itemListView.render().el
+    @$el.find("#listing-search-container").prepend @searchBarView.render().el
+    @$el.find("#listing-search-container").append @itemListView.render().el
     @$el.find("#tag-list-container").html @tagListView.render().el
     this

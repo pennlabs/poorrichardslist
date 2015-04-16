@@ -40,8 +40,9 @@ $off-black: rgb(86, 90, 92);
 
 // LISTINGS
 $sidebar-width: 280px;
-.listing-container {
+#listing-search-container {
   margin-left: $sidebar-width;
+  text-align: center;
   overflow-x: hidden;
   margin-right: auto;
   padding-left: 15px;
@@ -467,7 +468,7 @@ figure.photo-effect:hover p {
   .sidebar {
     display: none;
   }
-  .listing-container {
+  #listing-search-container {
     margin-left: 0px;
   }
   .grid figure {
