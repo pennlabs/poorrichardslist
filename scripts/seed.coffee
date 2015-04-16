@@ -40,9 +40,15 @@ genItem = (type, callback) ->
     console.log item
     callback null
 
+# remove all existing item and tag data
+db.items.remove {}, (err, result) ->
+  console.log "removed #{result} items"
+db.tags.remove {}, (err, result) ->
+  console.log "removed #{result} tags"
+
+# create item and tag data, then exit
 types = ["goods", "textbooks", "sublets"]
 genCount = 5
-
 async.each [0...genCount],
   (i, callback) ->
     genItem (faker.random.array_element types), callback
