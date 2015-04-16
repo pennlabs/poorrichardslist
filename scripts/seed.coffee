@@ -1,6 +1,7 @@
 async = require 'async'
 faker = require 'faker'
 Item = require '../server/item'
+db = require '../server/db'
 
 randomNumber = (min, max) ->
   if max?
@@ -14,6 +15,7 @@ merge = (item, attrs) ->
 
 genItem = (type, callback) ->
   item =
+    type: type
     desc: faker.lorem.sentences(randomNumber 8)
     imageIds: ["v1428538897/vhv78skyys4jagxaeww8.jpg"]
 
@@ -25,12 +27,12 @@ genItem = (type, callback) ->
       merge item,
         authors: (faker.name.findName() for _ in [1..(randomNumber 4)])
         edition: randomNumber 6
-        course: "#{faker.lorem.words 1}#{randomNumber 100, 500}"
+        course: "#{(faker.lorem.words 1).slice(0,4)}#{randomNumber 100, 500}"
   else if type == "sublets"
     merge item,
       location: faker.lorem.sentence()
       rent: randomNumber 5, 150
-      roomType: faker.lorem.words 2
+      roomType: (faker.lorem.words 2).join(" ")
 
   tags = ({name: "##{faker.lorem.words 1}"} for i in [0...(randomNumber 5)])
 
