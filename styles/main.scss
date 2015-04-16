@@ -108,13 +108,13 @@ $sidebar-width: 280px;
   }
 
 }
-
+  $tag-hover-color: #C7E7F0;
   .tag:hover {
-    background-color: #C7E7F0;
+    background-color: $tag-hover-color;
   }
 
   .selected {
-    background-color: #C7E7F0;
+    background-color: $tag-hover-color;
   }
 
   .dashboard-button {
