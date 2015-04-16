@@ -78,7 +78,7 @@ $sidebar-width: 280px;
     overflow: scroll;
     margin-left: 28%;
   }
-  .tag-list {
+  #tag-list-render-tags {
     text-align: left;
     display: inline-block;
     margin-left: 8px;
@@ -87,17 +87,23 @@ $sidebar-width: 280px;
   }
   .tag {
     font-size: 18px;
-    padding-bottom: 4px;
     padding-top: 4px;
     padding-left: 4px;
     cursor: pointer;
-    color: $off-black;
     padding-bottom: 15px;
-    text-decoration: none;
     width: 120px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .tag a {
+    color: $off-black;
+    text-decoration: none;
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    -o-user-select: none;
+    user-select: none;
   }
 
 }

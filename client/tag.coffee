@@ -28,7 +28,7 @@ App.Views.TagView = Backbone.View.extend
     $(e.currentTarget).toggleClass "selected"
 
 App.Views.TagListView = Backbone.View.extend
-  #className: "tag-list-height" # left off here
+  id: "tag-list-render-tags"
 
   events:
     "click a": "tagFilter"
@@ -37,7 +37,7 @@ App.Views.TagListView = Backbone.View.extend
     @listenTo @collection, 'add', @addTag
     @selectedTags = []
     _.bindAll(this, "updateHeight")
-    $(window).on 'resize', @updateHeight
+    $(window).on 'resize', @updateHeight # left off here
 
   updateHeight: ->
     @$el.css 'height', $(window).height()
@@ -49,7 +49,7 @@ App.Views.TagListView = Backbone.View.extend
 
   addTag: (tag) ->
     tagView = new App.Views.TagView(model: tag)
-    @$el.find("#tag-list-tag-render").append tagView.render().el
+    @$el.append tagView.render().el
 
   updateSelectedTags: (tag) ->
     if tag in @selectedTags
