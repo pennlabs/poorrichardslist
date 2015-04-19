@@ -18,6 +18,7 @@ App.Indices.ItemIndex = lunr(->
 )
 
 App.Views.SearchBarView = Backbone.View.extend
+  className: "search"
   events:
     "keyup input": "search"
 

@@ -22,6 +22,9 @@ App.Collections.Items = Backbone.Collection.extend
 
 # default view for an item
 App.Views.ItemView = Backbone.View.extend
+  tagName: "figure"
+  className: "photo-effect"
+
   initialize: ->
     @listenTo @model, 'change', @render
 
@@ -32,6 +35,8 @@ App.Views.ItemView = Backbone.View.extend
 
 # view for items in list format
 App.Views.ItemListView = Backbone.View.extend
+  className: "grid photo-content"
+  
   initialize: ->
     @listenTo @collection, 'add', @addItem
     @listenTo App.PubSub, 'search', @setSearchScope
