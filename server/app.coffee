@@ -91,5 +91,8 @@ app.get '/cloudinary', (req, res) ->
   params = cloudinary.utils.process_request_params params, {}
   res.json params
 
-app.listen 8080, ->
-  console.log "server started!!"
+
+module.exports = app
+unless module.parent
+  app.listen 8080, ->
+    console.log "server started!!"
