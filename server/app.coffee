@@ -91,5 +91,30 @@ app.get '/cloudinary', (req, res) ->
   params = cloudinary.utils.process_request_params params, {}
   res.json params
 
+
+# Returns the tags that match the form-inputted tag
+# for tokenization
+# Example:
+# {
+#   "_id" : ObjectId("55343bcfc68db5b75c8ad5e0"),
+#   "name" : "#bike",
+#   "count" : 1
+# }
+
+app.get '/tagsearch', (req, res) -> 
+  tags = [{
+     "_id" : ObjectId("55343bcfc68db5b75c8ad5e0"),
+     "name" : "#tagsearchtest",
+     "count" : 1}]
+  console.log tags
+  res.json tags
+
 app.listen 8080, ->
   console.log "server started!!"
+
+
+
+
+
+
+
