@@ -3,11 +3,20 @@ Item = require './item'
 db = require './db'
 
 express = require 'express'
+
+nodemailer = require 'nodemailer';
 morgan = require 'morgan'
 _ = require 'lodash'
 async = require 'async'
 cloudinary = require 'cloudinary'
 app = express()
+
+smtpTransport = nodemailer.createTransport('SMTP',
+  service: 'Gmail'
+  auth:
+    user: 'poorrichardslist@gmail.com'
+    pass: 'poorrichardslist350')
+
 
 app.use express.static 'public'
 app.use morgan 'combined'
@@ -81,6 +90,24 @@ app.delete '/tags/:id', (req, res) ->
     (err, result) ->
       res.json result
 
+app.get '/send', (req, res) ->
+  mailOptions = 
+    to: req.query.to
+    subject: req.query.subject
+    text: req.query.text
+  console.log mailOptions
+  smtpTransport.sendMail mailOptions, (error, response) ->
+    if error
+      console.log error
+      res.end 'error'
+    else
+      console.log 'Message sent: ' + response.message
+      res.end 'sent'
+    return
+  return
+
+
+
 # Returns cloudinary credentials for the client to upload images.
 # Credentials timeout in an hour. Example below:
 # { timestamp: 1426435407,
@@ -91,5 +118,5 @@ app.get '/cloudinary', (req, res) ->
   params = cloudinary.utils.process_request_params params, {}
   res.json params
 
-app.listen 8080, ->
+app.listen 8000, ->
   console.log "server started!!"
