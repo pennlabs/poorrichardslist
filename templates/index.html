@@ -15,6 +15,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.7/lunr.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.0/slick.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="js/vendor/jquery.ui.widget.js"></script>
     <script src="js/vendor/jquery.iframe-transport.js"></script>
     <script src="js/vendor/jquery.fileupload.js"></script>
@@ -29,6 +30,24 @@
     <script src="js/image.js"></script>
     <script src="js/router.js"></script>
     <title>Poor Richard's List</title>
+    <script>
+$(document).ready(function(){
+    var from,to,subject,text;
+
+    $("#send_email").click(function(){      
+        to=$("#to").val();
+        subject=$("#subject").val();
+        text=$("#content").val();
+        $("#message").text("Sending E-mail...Please wait");
+        $.get("http://localhost:8000/send",{to:to,subject:subject,text:text},function(data){
+        if(data=="sent")
+        {
+            $("#message").empty().html("Email is been sent at "+to+" !");
+        }
+});
+    });
+});
+</script>
   </head>
   <body>
     <div class="main">
