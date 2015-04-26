@@ -9,4 +9,7 @@ db.bind('tags').bind
     this.find({_id: {$in: item.tags}}).toArray (err, tags) ->
       callback err, tags
 
+db.createIndex 'tags', {name: "text"}, (err, indexName) ->
+    db.close
+
 module.exports = db
