@@ -37,11 +37,12 @@ App.Views.GoodsFormView = Backbone.View.extend
 
   save: (e) ->
     e.preventDefault()
+    console.log @$('select[name=tags]').val().join ' '
     data =
       name: @$('input[name=name]').val()
       desc: @$('textarea[name=desc]').val()
       price: @$('input[name=price]').val()
-      tags: @$('input[name=tags]').val()
+      tags: @$('select[name=tags]').val().join ' '
       imageIds: @$('input[name=image-id]').map(() -> $(this).val()).toArray()
       type: 'goods'
     @model.save data,
@@ -54,15 +55,7 @@ App.Views.GoodsFormView = Backbone.View.extend
   render: ->
     @$el.html Handlebars.compile $("#goods-form-template").html()
     @$el.find("#image-uploader").html @uploaderView.render().el
-    
-    config = 
-      '.chosen-select': {}
-      '.chosen-select-deselect': allow_single_deselect: true
-      '.chosen-select-no-single': disable_search_threshold: 10
-      '.chosen-select-no-results': no_results_text: 'Oops, nothing found!'
-      '.chosen-select-width': width: '100%'
-    for selector of config
-      @$el.find(selector).chosen config[selector]
+    @$el.find(".chosen-select").chosen()
 
     this
 

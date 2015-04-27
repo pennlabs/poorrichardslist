@@ -28,8 +28,10 @@ App.Router = Backbone.Router.extend
 
   new: (type) ->
     item = new App.Models.Item(type: type)
-    itemFormView = new App.Views.ItemFormView(model: item, type: type)
+    tags = new App.Collections.Tags()
+    itemFormView = new App.Views.ItemFormView(model: item, type: type, collection: tags)
     $("#container").html itemFormView.render().el
+    tags.fetch()
 
 $ ->
   app = new App.Router().start()
