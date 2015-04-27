@@ -54,7 +54,7 @@ App.Views.GoodsFormView = Backbone.View.extend
   render: ->
     @$el.html Handlebars.compile $("#goods-form-template").html()
     @$el.find("#image-uploader").html @uploaderView.render().el
-    @$el.find("#tags").tokenInput("tagsearch");
+    #@$el.find("#tags").tokenInput("tagsearch");
     this
 
 App.Views.TextbooksFormView = Backbone.View.extend
