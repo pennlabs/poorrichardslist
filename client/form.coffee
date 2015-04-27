@@ -54,7 +54,16 @@ App.Views.GoodsFormView = Backbone.View.extend
   render: ->
     @$el.html Handlebars.compile $("#goods-form-template").html()
     @$el.find("#image-uploader").html @uploaderView.render().el
-    #@$el.find("#tags").tokenInput("tagsearch");
+    
+    config = 
+      '.chosen-select': {}
+      '.chosen-select-deselect': allow_single_deselect: true
+      '.chosen-select-no-single': disable_search_threshold: 10
+      '.chosen-select-no-results': no_results_text: 'Oops, nothing found!'
+      '.chosen-select-width': width: '100%'
+    for selector of config
+      @$el.find(selector).chosen config[selector]
+
     this
 
 App.Views.TextbooksFormView = Backbone.View.extend

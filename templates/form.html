@@ -1,8 +1,8 @@
 <script id="item-form-template-main" type="text/x-handlebars-template" class="container">
-  <div class="top">
+  <div class="top"> 
         <h2><a id="title">Sell Your Stuff</a></h2>
         <h2 class="subtitle"> Somebody else is looking for it.</h2>
-  </div>
+  </div> 
   <div class="form-background">
     <div class="center-adjust">
       <div class="form-content">
@@ -17,7 +17,7 @@
 </script>
 
 <script id="goods-form-template" type="text/x-handlebars-template">
-    <div class="row">
+    <div class="row"> 
       <div class="four columns form-instruction">
         <span id="form-instruction">Add details about your goods</span>
       </div>
@@ -26,6 +26,11 @@
           <div class="row">
             <div class="eight columns">
               <label for="tags">Add tags to your goods</label>
+              <select data-placeholder="#bike #easylife" multiple class="chosen-select" style="width:350px;" tabindex="18" id="multiple-label-example"> 
+              <option value=""></option>
+              <option>American Black Bear</option>
+              <option>Asiatic Black Bear</option>
+              </select>
                   <input name="tags" class="goods-box" type="text" placeholder="#bike #easylife" id="tags">
             </div>
           </div>
@@ -57,6 +62,9 @@
         </form>
       </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+    <script src="js/vendor/chosen.jquery.js" type="text/javascript"></script>
+    <script src="js/vendor/prism.js" type="text/javascript" charset="utf-8"></script> 
 </script>
 
 <script id="textbooks-form-template" type="text/x-handlebars-template">

@@ -82,12 +82,6 @@ app.delete '/tags/:id', (req, res) ->
       res.json result
 
 
-app.get '/tagsearch', (req, res) -> 
-  query = req.query.q
-  tags = db.tags.find({$text: {$search: query}}).toArray (err, tags) ->
-    res.json tags 
-
-
 # Returns cloudinary credentials for the client to upload images.
 # Credentials timeout in an hour. Example below:
 # { timestamp: 1426435407,
