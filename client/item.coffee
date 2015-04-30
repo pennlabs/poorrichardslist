@@ -91,9 +91,6 @@ App.Views.ItemListView = Backbone.View.extend
 App.Views.ItemShowView = Backbone.View.extend
   id: "item-detail"
 
-  events:
-    "click #send_email": "emailSeller"
-
   initialize: ->
     @listenTo @model, 'change', @render
 
@@ -119,16 +116,13 @@ App.Views.EmailFormView = Backbone.View.extend
     "click button": "emailSeller"
 
   emailSeller: ->
-    $.get "/send",
+    $.post "/email",
       to: "honki91@gmail.com" # until we have users
       subject: "[Poor Richard's List] #{@model.get("normalizedTitle")} REPLY"
       body: @$el.find("#body").val(),
       (data) =>
         if data == "success"
-          @clearInputs()
-
-  clearInputs: ->
-    @$el.find("#body").val("")
+          @$el.find("#body").val("")
 
   render: ->
     template = Handlebars.compile $("#email-form-template").html()

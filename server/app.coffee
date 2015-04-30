@@ -3,20 +3,12 @@ Item = require './item'
 db = require './db'
 
 express = require 'express'
-
-nodemailer = require 'nodemailer';
 morgan = require 'morgan'
 _ = require 'lodash'
 async = require 'async'
 cloudinary = require 'cloudinary'
+nodemailer = require 'nodemailer'
 app = express()
-
-smtpTransport = nodemailer.createTransport('SMTP',
-  service: 'Gmail'
-  auth:
-    user: 'poorrichardslist@gmail.com'
-    pass: 'poorrichardslist350')
-
 
 app.use express.static 'public'
 app.use morgan 'combined'
@@ -29,6 +21,12 @@ cloudinary.config
   cloud_name: process.env.CLOUD_NAME
   api_key: process.env.CLOUDINARY_API_KEY
   api_secret: process.env.CLOUDINARY_API_SECRET
+
+smtpTransport = nodemailer.createTransport 'SMTP',
+  service: 'Gmail'
+  auth:
+    user: process.env.MAILER_EMAIL
+    pass: process.env.MAILER_PASSWORD
 
 # routes
 app.get '/items', (req, res) ->
@@ -90,11 +88,11 @@ app.delete '/tags/:id', (req, res) ->
     (err, result) ->
       res.json result
 
-app.get '/send', (req, res) ->
+app.post '/email', parseUrlencoded, (req, res) ->
   mailOptions =
-    to: req.query.to
-    subject: req.query.subject
-    text: req.query.body
+    to: req.body.to
+    subject: req.body.subject
+    text: req.body.body
   smtpTransport.sendMail mailOptions, (error, response) ->
     if error
       console.log error
