@@ -91,22 +91,17 @@ app.delete '/tags/:id', (req, res) ->
       res.json result
 
 app.get '/send', (req, res) ->
-  mailOptions = 
+  mailOptions =
     to: req.query.to
     subject: req.query.subject
-    text: req.query.text
-  console.log mailOptions
+    text: req.query.body
   smtpTransport.sendMail mailOptions, (error, response) ->
     if error
       console.log error
       res.end 'error'
     else
       console.log 'Message sent: ' + response.message
-      res.end 'sent'
-    return
-  return
-
-
+      res.end 'success'
 
 # Returns cloudinary credentials for the client to upload images.
 # Credentials timeout in an hour. Example below:
@@ -118,5 +113,5 @@ app.get '/cloudinary', (req, res) ->
   params = cloudinary.utils.process_request_params params, {}
   res.json params
 
-app.listen 8000, ->
+app.listen 8080, ->
   console.log "server started!!"

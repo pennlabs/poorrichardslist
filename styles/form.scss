@@ -1,0 +1,182 @@
+@import "variables";
+
+.top {
+    margin-top: 18px;
+    padding-top: 55px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#title {
+    font-family: $title-font;
+    font-size: 40px;
+    font-weight: 300;
+    color: black;
+    text-decoration: none;
+}
+
+.subtitle {
+    font-family: $subtitle-font;
+    font-size: 18px;
+    color: black;
+    text-decoration: none;
+}
+
+.form-background {
+    background-color: $background-color;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    left: 0px;
+    padding-top: 100px;
+}
+
+#goods-form, #sublets-form {
+  padding-bottom: 83px;
+}
+
+.center-adjust {
+    margin-right: 170px;
+}
+
+.select-form {
+    display: inline-table;
+}
+#select-instruction {
+    font-family: $form-font;
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+
+.form-hide-text {
+  color: $background-color;
+}
+
+.form-content {
+  display: inline-table;
+}
+
+.form-main-button {
+    border-radius: 4px;
+    font-family: $form-font;
+    font-style: normal;
+    text-transform: none;
+    font-weight: 400;
+    font-size: 18px;
+    background-color: white;
+    color: black;
+    height: 55px;
+    line-height: 55px;
+}
+
+.form-main-button:hover,
+button:hover,
+.button:focus,
+button:focus
+{
+  border-color: rgb(5,5,5);
+  outline: 0;
+}
+
+.form-instruction {
+    font-family: $form-font;
+    font-size: 18px;
+    margin-top: 80px;
+}
+
+.textbooks-adjust {
+    padding-right: 53px;
+}
+
+#type-form {
+  text-align: left;
+  width: 803px;
+  margin-top: 20px;
+  padding-left: 15px;
+  .four.columns {
+    margin-left: 0px;
+  }
+  .row.five.columns {
+    margin-left: 0px;
+  }
+  .textbooks-type-form {
+    width: 879px;
+  }
+  .goods-box {
+    width: 310px;
+  }
+  .textbooks-box,  .sublets-box {
+    width: 300px;
+  }
+  .price-width {
+    width: 65px;
+  }
+  .textbooks-small-box, .sublets-small-box {
+    width: 90px;
+  }
+  label {
+    font-family: $form-label-font;
+    font-size: 16px;
+    font-weight: 300;
+  }
+  input[type=text] {
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  input[type=price] {
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  input[type=number] {
+    margin-bottom: 15px;
+  }
+  input[type=submit] {
+    margin-top: 110px;
+    color: white;
+    background-color: #f44336;
+    border-color: #f44336;
+    text-transform: none;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-weight: 300;
+    font-size: 15px;
+    opacity: .67;
+    height: 30px;
+    line-height: 30px;
+    font-family: $form-label-font;
+  }
+  textarea {
+    height: 110px;
+    font-size: 14px;
+  }
+}
+
+@media(max-width: 549px) {
+    .form-background {
+      padding-top: 15px;
+    }
+    #type-form {
+      margin-top: -55px;
+    }
+    .form-instruction {
+      padding-left: 35px;
+      margin-bottom: 10px;
+    }
+    .form-content {
+      display: block;
+    }
+    .form-main-button {
+      width: 300px;
+    }
+    .sidebar {
+      max-width: none;
+    }
+    .center-adjust {
+      margin-right: 0px;
+    }
+}
+
+

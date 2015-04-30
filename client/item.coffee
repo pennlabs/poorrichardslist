@@ -36,7 +36,7 @@ App.Views.ItemView = Backbone.View.extend
 # view for items in list format
 App.Views.ItemListView = Backbone.View.extend
   className: "grid photo-content"
-  
+
   initialize: ->
     @listenTo @collection, 'add', @addItem
     @listenTo App.PubSub, 'search', @setSearchScope
@@ -89,6 +89,11 @@ App.Views.ItemListView = Backbone.View.extend
 
 # view for items on the show page
 App.Views.ItemShowView = Backbone.View.extend
+  id: "item-detail"
+
+  events:
+    "click #send_email": "emailSeller"
+
   initialize: ->
     @listenTo @model, 'change', @render
 
@@ -101,4 +106,31 @@ App.Views.ItemShowView = Backbone.View.extend
     @$el.find(".image-carousel").slick(
       dots: true
     )
+    emailFormView = new App.Views.EmailFormView(model: @model)
+    @$el.find(".desc-row").after emailFormView.render().el
+    this
+
+App.Views.EmailFormView = Backbone.View.extend
+  id: "email-form"
+
+  className: "row"
+
+  events:
+    "click button": "emailSeller"
+
+  emailSeller: ->
+    $.get "/send",
+      to: "honki91@gmail.com" # until we have users
+      subject: "[Poor Richard's List] #{@model.get("normalizedTitle")} REPLY"
+      body: @$el.find("#body").val(),
+      (data) =>
+        if data == "success"
+          @clearInputs()
+
+  clearInputs: ->
+    @$el.find("#body").val("")
+
+  render: ->
+    template = Handlebars.compile $("#email-form-template").html()
+    @$el.html template(@model.attributes)
     this

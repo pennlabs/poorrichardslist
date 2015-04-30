@@ -16,72 +16,62 @@
   </figcaption>
 </script>
 
-
-
-
 <script id="item-show-template" type="text/x-handlebars-template">
-  <div id="item-detail">
-    <div class="navbar">
-      <h2><a href="/">Poor Richard's List</a></h2>
-      <div class="menu">
-        <a>Sign out</a>
-        <a>noonanja</a>
+  <div class="navbar">
+    <h2><a href="/">Poor Richard's List</a></h2>
+    <div class="menu">
+      <a>Sign out</a>
+      <a>noonanja</a>
+    </div>
+  </div>
+  <div class="body container">
+    <div class="image-carousel">
+      {{#each detailImageUrls}}
+        <div>
+          <img class="item-image" src="{{this}}"/>
+        </div>
+      {{/each}}
+    </div>
+    <h3 class=".title">
+      {{normalizedTitle}}
+    </h3>
+    <div class="row">
+      <div id="price" class="ten columns">
+        <label>${{normalizedPrice}}</label>
       </div>
     </div>
-    <div class="body container">
-      <div class="image-carousel">
-        {{#each detailImageUrls}}
-          <div>
-            <img class="item-image" src="{{this}}"/>
-          </div>
+    <div class="row tags-row">
+      <div class="three columns field-name">
+        Tags
+      </div>
+      <div id="tags" class="seven columns">
+        <hr>
+        {{#each tags}}
+          {{name}}
         {{/each}}
       </div>
-      <h3>
-        {{#if name}}
-          {{name}}
-        {{/if}}
-        {{#if location}}
-          {{location}}
-        {{/if}}
-      </h3>
-      <div class="row">
-        <div id="price" class="ten columns">
-          {{#if price}}
-            <label>${{price}}</label>
-          {{/if}}
-          {{#if rent}}
-            <label>${{rent}} / month</label>
-          {{/if}}
-        </div>
+    </div>
+    <div class="row desc-row">
+      <div class="three columns field-name">
+        Description
       </div>
-      <div class="row tags-row">
-        <div class="three columns field-name">
-          Tags
-        </div>
-        <div id="tags" class="seven columns">
-          <hr>
-          {{#each tags}}
-            {{name}}
-          {{/each}}
-        </div>
-      </div>
-      <div class="row">
-        <div class="three columns field-name">
-          Description
-        </div>
-        <div id="description" class="seven columns">
-          <hr>
-          <p>{{desc}}</p>
-          <hr>
-        </div>
+      <div id="description" class="seven columns">
+        <hr>
+        <p>{{desc}}</p>
+        <hr>
       </div>
     </div>
   </div>
+</script>
 
-
-
-
-
+<script id="email-form-template" type="text/x-handlebars-template">
+  <div class="three columns field-name">
+    Contact Seller
+  </div>
+  <div id="description" class="seven columns">
+    <textarea id="body" placeholder="Write what you want to send"></textarea>
+    <button>Send Email</button>
+  </div>
 </script>
 
 <script id="goods-show-template" type="text/x-handlebars-template">
@@ -128,28 +118,3 @@
     </div>
   </div>
 </script>
-
-
-<div>
-<p></p>
-<center>
-<p>Email the seller!</p>
-</center>
-<center>
-<input id="to" size="41" type="text" placeholder="Enter E-mail ID where you want to send" />
-</center>
-<p></p>
-<center>
-<input id="subject" size="41" type="text" placeholder="Write Subject" />
-</center>
-<p></p>
-<center>
-<textarea id="content" cols="40" rows="5" placeholder="Write what you want to send"></textarea>
-</center>
-<p></p>
-<center>
-<button id="send_email">Send Email</button>
-<p></p>
-<span id="message"></span>
-</center>
-</div>
