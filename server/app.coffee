@@ -7,6 +7,7 @@ morgan = require 'morgan'
 _ = require 'lodash'
 async = require 'async'
 cloudinary = require 'cloudinary'
+nodemailer = require 'nodemailer'
 app = express()
 
 app.use express.static 'public'
@@ -20,6 +21,12 @@ cloudinary.config
   cloud_name: process.env.CLOUD_NAME
   api_key: process.env.CLOUDINARY_API_KEY
   api_secret: process.env.CLOUDINARY_API_SECRET
+
+smtpTransport = nodemailer.createTransport 'SMTP',
+  service: 'Gmail'
+  auth:
+    user: process.env.MAILER_EMAIL
+    pass: process.env.MAILER_PASSWORD
 
 # routes
 app.get '/items', (req, res) ->
@@ -80,6 +87,19 @@ app.delete '/tags/:id', (req, res) ->
   db.tags.removeById req.params.id,
     (err, result) ->
       res.json result
+
+app.post '/email', parseUrlencoded, (req, res) ->
+  mailOptions =
+    to: req.body.to
+    subject: req.body.subject
+    text: req.body.body
+  smtpTransport.sendMail mailOptions, (error, response) ->
+    if error
+      console.log error
+      res.end 'error'
+    else
+      console.log 'Message sent: ' + response.message
+      res.end 'success'
 
 # Returns cloudinary credentials for the client to upload images.
 # Credentials timeout in an hour. Example below:
