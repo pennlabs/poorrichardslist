@@ -15,6 +15,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-includes": "^0.4.5",
     "lodash": "^3.2.0",
+    "nodemailer": "~0.7.1",
     "mocha": "^2.2.4",
     "mongodb": "^1.4.29",
     "mongoskin": "^1.4.13",

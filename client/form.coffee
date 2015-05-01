@@ -24,6 +24,7 @@ App.Views.ItemFormView = Backbone.View.extend
       @$el.find("#type-form").html subletsFormView.render().el
     if @type
       @$el.find("#select-instruction").addClass('form-hide-text')
+      @$el.find("#email-form").show()
     this
 
 App.Views.GoodsFormView = Backbone.View.extend
