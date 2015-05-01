@@ -28,7 +28,7 @@ app.get '/items', (req, res) ->
       (item, callback) ->
         if "imageIds" of item
           item.smallImageUrl = cloudinary.utils.url item.imageIds[0], {
-            crop: 'fit', width: 400, height: 400 }
+            crop: 'fill', width: 533, height: 400 }
         db.tags.findByItem item, (err, tags) ->
           item.tags = tags
           callback null, item
