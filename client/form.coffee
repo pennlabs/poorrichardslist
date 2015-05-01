@@ -24,7 +24,6 @@ App.Views.ItemFormView = Backbone.View.extend
       @$el.find("#type-form").html subletsFormView.render().el
     if @type
       @$el.find("#select-instruction").addClass('form-hide-text')
-      @$el.find("#email-form").show()
     this
 
 App.Views.GoodsFormView = Backbone.View.extend
@@ -38,11 +37,12 @@ App.Views.GoodsFormView = Backbone.View.extend
 
   save: (e) ->
     e.preventDefault()
+    console.log @$('select[name=tags]').val().join ' '
     data =
       name: @$('input[name=name]').val()
       desc: @$('textarea[name=desc]').val()
       price: @$('input[name=price]').val()
-      tags: @$('input[name=tags]').val()
+      tags: @$('select[name=tags]').val().join ' '
       imageIds: @$('input[name=image-id]').map(() -> $(this).val()).toArray()
       type: 'goods'
     @model.save data,
@@ -55,6 +55,7 @@ App.Views.GoodsFormView = Backbone.View.extend
   render: ->
     @$el.html Handlebars.compile $("#goods-form-template").html()
     @$el.find("#image-uploader").html @uploaderView.render().el
+    @$el.find(".chosen-select").chosen()
     this
 
 App.Views.TextbooksFormView = Backbone.View.extend
