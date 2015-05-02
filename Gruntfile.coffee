@@ -7,7 +7,7 @@ module.exports = (grunt) ->
         dest: 'public'
         flatten: true
     coffee:
-      glob_to_multiple:
+      client:
           cwd: '.'
           src: ['client/*']
           dest: 'public/js/'
