@@ -10,11 +10,8 @@ describe 'listings page', ->
   before (done) ->
     this.browser.visit '/', done
 
-  it 'should show upload button', ->
+  it 'successfully loads', ->
     this.browser.assert.success()
-    this.browser.assert.element '#upload'
 
   after (done) ->
     this.server.close done
-
-
