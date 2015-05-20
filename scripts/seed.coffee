@@ -1,4 +1,4 @@
-require('dotenv').load();
+require('dotenv').load()
 async = require 'async'
 faker = require 'faker'
 Item = require '../server/item'
