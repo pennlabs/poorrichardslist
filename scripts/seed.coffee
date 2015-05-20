@@ -1,3 +1,4 @@
+require('dotenv').load();
 async = require 'async'
 faker = require 'faker'
 Item = require '../server/item'
@@ -41,6 +42,7 @@ genItem = (type, callback) ->
     console.log item
     callback null
 
+ 
 # remove all existing item and tag data
 db.items.remove {}, (err, result) ->
   console.log "removed #{result} items"
