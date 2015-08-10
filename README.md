@@ -1,3 +1,9 @@
+# Poor Richard's List
+
+A student marketplace that makes buying, selling, and searching for goods delightful.
+
+## Contributing
+
 To Get Started:
 
 1. Clone repo.
@@ -9,3 +15,7 @@ To Get Started:
 7. Run grunt to continuously compile html and coffeescript files `grunt watch`.
 8. Install supervisor globally `npm install supervisor -g`
 9. Run server via supervisor `supervisor server/app.coffee`.
+
+## System Administration
+
+To deploy on the server, you must run the `deploy.sh` script.
