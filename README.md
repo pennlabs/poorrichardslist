@@ -9,6 +9,8 @@ To Get Started:
 1. Clone repo.
 2. Install npm modules `npm install`.
 3. Install coffeescript globally `npm install -g coffee-script`.
+3. Add `.env` file in the root directory with appropriate environment variables.
+3. [Install MongoDB](http://docs.mongodb.org/manual/installation/) for your platform.
 4. Generate seed item/tag data `coffee scripts/seed.coffee`.
 5. Install grunt globally `sudo npm install -g grunt-cli`.
 6. After confirming Ruby installation `ruby -v`, install Sass `gem install sass`.
